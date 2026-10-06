@@ -1,0 +1,1 @@
+Source patches, splitter variants and benchmark harness are derived from vLLM-Omni and retain their original copyright notices. OmniVoice splitter source also credits Xiaomi Corp. Model weights are not included. Audio is generated from the synthetic prompts in prompts.json, without reference voices.

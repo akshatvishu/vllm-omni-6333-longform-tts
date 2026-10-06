@@ -1,0 +1,170 @@
+{
+  "original": {
+    "environment": {
+      "accelerator": "cuda",
+      "device_name": "",
+      "huggingface_hub": "1.33.0",
+      "jiwer": "4.0.0",
+      "omnivoice": "0.2.1",
+      "pydub": "0.25.1",
+      "python": "3.12.14",
+      "soundfile": "0.14.0",
+      "torch": "2.13.0+git733fca1",
+      "torch_hip": "7.2.53211",
+      "torchaudio": "2.11.0+34c52a6",
+      "transformers": "5.14.1",
+      "vllm": "0.31.0+rocm723",
+      "vllm_omni": "0.1.dev3442+g197d4b025.rocm"
+    },
+    "settings": {
+      "batch_size": 1,
+      "concurrencies": [
+        1
+      ],
+      "diagnostic_run": true,
+      "generation_dtype": "float32",
+      "gpu_index": 0,
+      "model_revision": "c5fdb5ccb189668d56333f77ba2629f4cd7535f4",
+      "seeds": [
+        42,
+        123,
+        7,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "vllm_peak_memory_source": "X-Peak-Memory-MB when returned; null otherwise",
+      "whisper_dtype": "float32",
+      "whisper_model": "openai/whisper-large-v3-turbo",
+      "whisper_revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9"
+    },
+    "source_sha256": "47eb9d84cff8cb9e4c619aeeb8c73d107e74ef0e109838adf3e9a8007afc65b5",
+    "whisper": {
+      "dtype": "float32",
+      "gpu_name": "",
+      "hip_version": "7.2.53211",
+      "input_device": "cuda:0",
+      "input_device_checked_each_call": true,
+      "model": "openai/whisper-large-v3-turbo",
+      "model_device": "cuda:0",
+      "revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
+      "torch_version": "2.13.0+git733fca1"
+    }
+  },
+  "decimal_only": {
+    "environment": {
+      "accelerator": "cuda",
+      "device_name": "",
+      "huggingface_hub": "1.33.0",
+      "jiwer": "4.0.0",
+      "omnivoice": "0.2.1",
+      "pydub": "0.25.1",
+      "python": "3.12.14",
+      "soundfile": "0.14.0",
+      "torch": "2.13.0+git733fca1",
+      "torch_hip": "7.2.53211",
+      "torchaudio": "2.11.0+34c52a6",
+      "transformers": "5.14.1",
+      "vllm": "0.31.0+rocm723",
+      "vllm_omni": "0.1.dev3442+g197d4b025.rocm"
+    },
+    "settings": {
+      "batch_size": 1,
+      "concurrencies": [
+        1
+      ],
+      "diagnostic_run": true,
+      "generation_dtype": "float32",
+      "gpu_index": 0,
+      "model_revision": "c5fdb5ccb189668d56333f77ba2629f4cd7535f4",
+      "seeds": [
+        42,
+        123,
+        7,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "vllm_peak_memory_source": "X-Peak-Memory-MB when returned; null otherwise",
+      "whisper_dtype": "float32",
+      "whisper_model": "openai/whisper-large-v3-turbo",
+      "whisper_revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9"
+    },
+    "source_sha256": "31f378171215c3a57c568aa0017ccc53c1ebe6662a29bd6b78eb05dec01d5fc1",
+    "whisper": {
+      "dtype": "float32",
+      "gpu_name": "",
+      "hip_version": "7.2.53211",
+      "input_device": "cuda:0",
+      "input_device_checked_each_call": true,
+      "model": "openai/whisper-large-v3-turbo",
+      "model_device": "cuda:0",
+      "revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
+      "torch_version": "2.13.0+git733fca1"
+    }
+  },
+  "full": {
+    "environment": {
+      "accelerator": "cuda",
+      "device_name": "",
+      "huggingface_hub": "1.33.0",
+      "jiwer": "4.0.0",
+      "omnivoice": "0.2.1",
+      "pydub": "0.25.1",
+      "python": "3.12.14",
+      "soundfile": "0.14.0",
+      "torch": "2.13.0+git733fca1",
+      "torch_hip": "7.2.53211",
+      "torchaudio": "2.11.0+34c52a6",
+      "transformers": "5.14.1",
+      "vllm": "0.31.0+rocm723",
+      "vllm_omni": "0.1.dev3442+g197d4b025.rocm"
+    },
+    "settings": {
+      "batch_size": 1,
+      "concurrencies": [
+        1
+      ],
+      "diagnostic_run": true,
+      "generation_dtype": "float32",
+      "gpu_index": 0,
+      "model_revision": "c5fdb5ccb189668d56333f77ba2629f4cd7535f4",
+      "seeds": [
+        42,
+        123,
+        7,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "vllm_peak_memory_source": "X-Peak-Memory-MB when returned; null otherwise",
+      "whisper_dtype": "float32",
+      "whisper_model": "openai/whisper-large-v3-turbo",
+      "whisper_revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9"
+    },
+    "source_sha256": "5def1dbb301e8cf1b4c055fe1215ed3d66376b1873a012f2d92a9076d4abbd8a",
+    "whisper": {
+      "dtype": "float32",
+      "gpu_name": "",
+      "hip_version": "7.2.53211",
+      "input_device": "cuda:0",
+      "input_device_checked_each_call": true,
+      "model": "openai/whisper-large-v3-turbo",
+      "model_device": "cuda:0",
+      "revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
+      "torch_version": "2.13.0+git733fca1"
+    }
+  }
+}

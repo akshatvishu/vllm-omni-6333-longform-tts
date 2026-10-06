@@ -1,0 +1,476 @@
+[
+  {
+    "variant": "original",
+    "prompt": "english_decimal_boundary",
+    "n": 10,
+    "coverage": 0.9666666666666667,
+    "wer": 0.03409090909090909,
+    "errors": [
+      {
+        "seed": 42,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 123,
+        "substitutions": 1,
+        "deletions": 2,
+        "insertions": 0,
+        "coverage": 0.9772727272727273
+      },
+      {
+        "seed": 7,
+        "substitutions": 0,
+        "deletions": 3,
+        "insertions": 0,
+        "coverage": 0.9772727272727273
+      },
+      {
+        "seed": 0,
+        "substitutions": 1,
+        "deletions": 3,
+        "insertions": 0,
+        "coverage": 0.9696969696969697
+      },
+      {
+        "seed": 1,
+        "substitutions": 3,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9696969696969697
+      },
+      {
+        "seed": 2,
+        "substitutions": 1,
+        "deletions": 2,
+        "insertions": 0,
+        "coverage": 0.9772727272727273
+      },
+      {
+        "seed": 3,
+        "substitutions": 1,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9848484848484849
+      },
+      {
+        "seed": 4,
+        "substitutions": 2,
+        "deletions": 4,
+        "insertions": 0,
+        "coverage": 0.9545454545454546
+      },
+      {
+        "seed": 5,
+        "substitutions": 3,
+        "deletions": 2,
+        "insertions": 0,
+        "coverage": 0.9621212121212122
+      },
+      {
+        "seed": 6,
+        "substitutions": 9,
+        "deletions": 5,
+        "insertions": 1,
+        "coverage": 0.8939393939393939
+      }
+    ]
+  },
+  {
+    "variant": "original",
+    "prompt": "english_comma_sentences",
+    "n": 10,
+    "coverage": 0.997979797979798,
+    "wer": 0.00202020202020202,
+    "errors": [
+      {
+        "seed": 42,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 123,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 7,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 0.9797979797979798
+      },
+      {
+        "seed": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 1,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 2,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 3,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 4,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 5,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 6,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "variant": "decimal_only",
+    "prompt": "english_decimal_boundary",
+    "n": 10,
+    "coverage": 0.9727272727272728,
+    "wer": 0.027272727272727275,
+    "errors": [
+      {
+        "seed": 42,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 123,
+        "substitutions": 1,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9848484848484849
+      },
+      {
+        "seed": 7,
+        "substitutions": 2,
+        "deletions": 6,
+        "insertions": 0,
+        "coverage": 0.9393939393939394
+      },
+      {
+        "seed": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 1,
+        "substitutions": 0,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9924242424242424
+      },
+      {
+        "seed": 2,
+        "substitutions": 0,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9924242424242424
+      },
+      {
+        "seed": 3,
+        "substitutions": 0,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9924242424242424
+      },
+      {
+        "seed": 4,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 0.9924242424242424
+      },
+      {
+        "seed": 5,
+        "substitutions": 4,
+        "deletions": 4,
+        "insertions": 0,
+        "coverage": 0.9393939393939394
+      },
+      {
+        "seed": 6,
+        "substitutions": 6,
+        "deletions": 8,
+        "insertions": 0,
+        "coverage": 0.8939393939393939
+      }
+    ]
+  },
+  {
+    "variant": "decimal_only",
+    "prompt": "english_comma_sentences",
+    "n": 10,
+    "coverage": 0.997979797979798,
+    "wer": 0.00202020202020202,
+    "errors": [
+      {
+        "seed": 42,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 123,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 7,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 0.9797979797979798
+      },
+      {
+        "seed": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 1,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 2,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 3,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 4,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 5,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 6,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "variant": "full",
+    "prompt": "english_decimal_boundary",
+    "n": 10,
+    "coverage": 0.9659090909090909,
+    "wer": 0.038636363636363635,
+    "errors": [
+      {
+        "seed": 42,
+        "substitutions": 1,
+        "deletions": 6,
+        "insertions": 0,
+        "coverage": 0.946969696969697
+      },
+      {
+        "seed": 123,
+        "substitutions": 0,
+        "deletions": 2,
+        "insertions": 0,
+        "coverage": 0.9848484848484849
+      },
+      {
+        "seed": 7,
+        "substitutions": 2,
+        "deletions": 4,
+        "insertions": 2,
+        "coverage": 0.9545454545454546
+      },
+      {
+        "seed": 0,
+        "substitutions": 2,
+        "deletions": 1,
+        "insertions": 0,
+        "coverage": 0.9772727272727273
+      },
+      {
+        "seed": 1,
+        "substitutions": 0,
+        "deletions": 3,
+        "insertions": 0,
+        "coverage": 0.9772727272727273
+      },
+      {
+        "seed": 2,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 3,
+        "substitutions": 1,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 0.9924242424242424
+      },
+      {
+        "seed": 4,
+        "substitutions": 2,
+        "deletions": 0,
+        "insertions": 1,
+        "coverage": 0.9848484848484849
+      },
+      {
+        "seed": 5,
+        "substitutions": 8,
+        "deletions": 1,
+        "insertions": 2,
+        "coverage": 0.9318181818181819
+      },
+      {
+        "seed": 6,
+        "substitutions": 5,
+        "deletions": 7,
+        "insertions": 1,
+        "coverage": 0.9090909090909091
+      }
+    ]
+  },
+  {
+    "variant": "full",
+    "prompt": "english_comma_sentences",
+    "n": 10,
+    "coverage": 1.0,
+    "wer": 0.0,
+    "errors": [
+      {
+        "seed": 42,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 123,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 7,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 0,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 1,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 2,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 3,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 4,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 5,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      },
+      {
+        "seed": 6,
+        "substitutions": 0,
+        "deletions": 0,
+        "insertions": 0,
+        "coverage": 1.0
+      }
+    ]
+  }
+]

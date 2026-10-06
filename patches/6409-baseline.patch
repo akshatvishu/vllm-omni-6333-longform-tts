@@ -1,0 +1,1448 @@
+diff --git a/docs/serving/speech_api.md b/docs/serving/speech_api.md
+index a9750fd68..c6116c7d8 100644
+--- a/docs/serving/speech_api.md
++++ b/docs/serving/speech_api.md
+@@ -144,8 +144,10 @@ Content-Type: application/json
+ | `language` | string | "Auto" | Language (see supported languages below) |
+ | `instructions` | string | "" | Voice style/emotion instructions |
+ | `max_new_tokens` | integer | 2048 | Maximum tokens to generate |
++| `seed` | integer | null | Random seed for repeatable generation. |
+ | `initial_codec_chunk_frames` | integer | null | Per-request initial chunk size override for TTFA tuning. When null, IC is computed dynamically based on server load. |
+ | `non_streaming_mode` | bool | null | Qwen3-TTS prompt construction mode override. Does not affect HTTP response streaming or async-chunk pipelining. When null, Qwen3-TTS uses model defaults: Base=false, CustomVoice/VoiceDesign=true. |
++| `extra_params` | object | null | Model-specific generation controls. See the model sections for supported fields. |
+ | `stream` | bool | false | When true, stream OpenAI `speech.audio.*` SSE events (requires `response_format="pcm"` or `"wav"`). For raw PCM/WAV byte streaming, set `stream_format="audio"`. |
+ | `stream_format` | string | null | Streaming output format. `"audio"` streams raw audio bytes as they are decoded; `"sse"` streams OpenAI `speech.audio.*` Server-Sent Events. If omitted, `stream=true` selects SSE and `stream=false` remains non-streaming. See [Response Format](#response-format). |
+ 
+@@ -839,6 +841,25 @@ OmniVoice uses packed variable-length attention for batched generator execution.
+ key, and value tensors are evaluated in BF16 even when the stage is configured with `dtype: float32`; the attention output is converted back to the model's
+ hidden-state dtype before the output projection. Consequently, a float32 stage configuration does not imply FP32 attention arithmetic.
+ 
++OmniVoice splits long input into smaller text chunks and joins the decoded audio. You can change the split behavior for one request through `extra_params`:
++
++| Parameter | Type | Default | Description |
++|-----------|------|---------|-------------|
++| `audio_chunk_duration` | float | 15.0 | Target duration in seconds for each generated text chunk. The value must be positive. |
++| `audio_chunk_threshold` | float | 30.0 | Estimated duration in seconds above which chunking starts. The value must be non-negative. |
++
++Use the defaults unless you have tested output quality for your workload. To retain protection from long text word loss, keep `audio_chunk_duration` at or below 15 seconds and `audio_chunk_threshold` at or below 30 seconds. Lower values create more chunks and audio joins, which can increase generation time and introduce audible pauses.
++
++```json
++{
++    "input": "A long passage to synthesize...",
++    "extra_params": {
++        "audio_chunk_duration": 15.0,
++        "audio_chunk_threshold": 30.0
++    }
++}
++```
++
+ ### VoxCPM2
+ 
+ | Model | Description |
+diff --git a/examples/offline_inference/text_to_speech/omnivoice/end2end.py b/examples/offline_inference/text_to_speech/omnivoice/end2end.py
+index f1699d0b8..1046ae745 100644
+--- a/examples/offline_inference/text_to_speech/omnivoice/end2end.py
++++ b/examples/offline_inference/text_to_speech/omnivoice/end2end.py
+@@ -126,7 +126,7 @@ def run_e2e():
+     if mm_processor_kwargs:
+         prompts["mm_processor_kwargs"] = mm_processor_kwargs
+ 
+-    sampling_params_list = [OmniDiffusionSamplingParams(extra_args={"seed": args.seed})]
++    sampling_params_list = [OmniDiffusionSamplingParams(seed=args.seed)]
+ 
+     print(f"Generating speech for: {args.text}")
+ 
+diff --git a/examples/online_serving/text_to_speech/omnivoice/speech_client.py b/examples/online_serving/text_to_speech/omnivoice/speech_client.py
+index 9c9b8128e..ceeb05251 100644
+--- a/examples/online_serving/text_to_speech/omnivoice/speech_client.py
++++ b/examples/online_serving/text_to_speech/omnivoice/speech_client.py
+@@ -47,8 +47,7 @@ def run_tts(args) -> None:
+         "response_format": args.response_format,
+     }
+     if args.seed is not None:
+-        payload["extra_params"] = {}
+-        payload["extra_params"]["seed"] = args.seed
++        payload["seed"] = args.seed
+ 
+     if args.voice:
+         payload["voice"] = args.voice
+diff --git a/tests/diffusion/models/omnivoice/test_chunking.py b/tests/diffusion/models/omnivoice/test_chunking.py
+new file mode 100644
+index 000000000..89b4ef817
+--- /dev/null
++++ b/tests/diffusion/models/omnivoice/test_chunking.py
+@@ -0,0 +1,404 @@
++# SPDX-License-Identifier: Apache-2.0
++# SPDX-FileCopyrightText: Copyright contributors to the vLLM project
++
++from types import SimpleNamespace
++
++import pytest
++import torch
++
++from vllm_omni.diffusion.models.omnivoice.chunking import (
++    _split_at_sentence_boundaries,
++    join_audio_chunks,
++    split_text_into_chunks,
++)
++from vllm_omni.diffusion.models.omnivoice.pipeline_omnivoice import (
++    OmniVoicePipeline,
++    _copy_audio_to_cpu,
++    _parse_chunking_seconds,
++)
++from vllm_omni.errors import OmniClientError
++from vllm_omni.model_executor.models.omnivoice.omnivoice_generator import OmniVoiceGenerator
++from vllm_omni.transformers_utils.configs.omnivoice import OmniVoiceConfig
++
++pytestmark = [pytest.mark.core_model, pytest.mark.cpu, pytest.mark.diffusion]
++
++
++def test_chunking_config_uses_upstream_defaults_and_accepts_overrides():
++    default_config = OmniVoiceConfig()
++    override_config = OmniVoiceConfig(
++        audio_chunk_duration=12.0,
++        audio_chunk_threshold=24.0,
++    )
++
++    assert default_config.audio_chunk_duration == 15.0
++    assert default_config.audio_chunk_threshold == 30.0
++    assert override_config.audio_chunk_duration == 12.0
++    assert override_config.audio_chunk_threshold == 24.0
++
++
++@pytest.mark.parametrize(
++    ("value", "allow_zero"),
++    [
++        (True, False),
++        ("invalid", False),
++        (float("nan"), False),
++        (float("inf"), False),
++        (0, False),
++        (-1, True),
++    ],
++)
++def test_chunking_seconds_rejects_invalid_values(value, allow_zero):
++    with pytest.raises(ValueError):
++        _parse_chunking_seconds("audio_chunk_duration", value, allow_zero=allow_zero)
++
++
++def test_split_text_preserves_abbreviations_and_closing_marks():
++    text = 'Dr. Smith left. "Next sentence!" Final sentence.'
++
++    chunks = split_text_into_chunks(text, max_characters=20)
++
++    assert chunks == ["Dr. Smith left.", '"Next sentence!"', "Final sentence."]
++
++
++def test_split_text_handles_multi_period_abbreviation_and_cjk_punctuation():
++    text = "Use e.g. this form. 下一句。最后一句！"
++
++    chunks = split_text_into_chunks(text, max_characters=20)
++
++    assert chunks == ["Use e.g. this form.", "下一句。最后一句！"]
++
++
++@pytest.mark.parametrize(
++    ("text", "expected"),
++    [
++        ("Meet me at apt. 5. Then leave.", ["Meet me at apt. 5.", " Then leave."]),
++        ("Read the D.I.Y. guide. Next.", ["Read the D.I.Y. guide.", " Next."]),
++        ("Read the D.I.Y guide. Next.", ["Read the D.I.Y guide.", " Next."]),
++        ("Please R.S.V.P. today. Thanks.", ["Please R.S.V.P. today.", " Thanks."]),
++        ("Please R.S.V.P today. Thanks.", ["Please R.S.V.P today.", " Thanks."]),
++        ("P.S. Please reply. Done.", ["P.S. Please reply.", " Done."]),
++        ("P.S Please reply. Done.", ["P.S Please reply.", " Done."]),
++        ("Smith et al. reported it. Next.", ["Smith et al. reported it.", " Next."]),
++    ],
++)
++def test_sentence_boundaries_preserve_additional_abbreviations(text, expected):
++    assert _split_at_sentence_boundaries(text) == expected
++
++
++@pytest.mark.parametrize(
++    "text",
++    [
++        "alpha beta gamma delta epsilon",
++        "alpha, beta gamma delta epsilon",
++        "abcdefghijklmnopqrstuvwxyz",
++    ],
++)
++def test_split_text_bounds_oversized_sentences_without_dropping_content(text):
++    chunks = split_text_into_chunks(text, max_characters=10)
++
++    assert chunks
++    assert all(len(chunk) <= 10 for chunk in chunks)
++    assert "".join(chunks).replace(" ", "") == text.replace(" ", "")
++
++
++def test_split_text_keeps_short_final_sentence_when_merge_would_exceed_limit():
++    chunks = split_text_into_chunks("Long sentence. X", max_characters=14)
++
++    assert chunks == ["Long sentence.", "X"]
++
++
++def test_join_audio_chunks_returns_single_chunk_unchanged():
++    audio = torch.arange(4, dtype=torch.float32).reshape(1, 1, 4)
++
++    assert join_audio_chunks([audio], sample_rate=20) is audio
++
++
++def test_join_audio_chunks_fades_boundaries_and_inserts_silence():
++    first = torch.ones(1, 1, 4)
++    second = torch.full((1, 1, 3), 2.0)
++
++    joined = join_audio_chunks([first, second], sample_rate=20)
++
++    expected = torch.tensor([1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0]).reshape(1, 1, -1)
++    torch.testing.assert_close(joined, expected)
++    torch.testing.assert_close(first, torch.ones_like(first))
++    torch.testing.assert_close(second, torch.full_like(second, 2.0))
++
++
++def test_join_audio_chunks_fades_both_edges_of_middle_chunks():
++    chunks = [torch.full((1, 1, 4), value) for value in (1.0, 2.0, 3.0)]
++    original_chunks = [chunk.clone() for chunk in chunks]
++
++    joined = join_audio_chunks(chunks, sample_rate=20)
++
++    expected = torch.tensor([1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, 3.0]).reshape(
++        1, 1, -1
++    )
++    torch.testing.assert_close(joined, expected)
++    for chunk, original_chunk in zip(chunks, original_chunks, strict=True):
++        torch.testing.assert_close(chunk, original_chunk)
++
++
++def test_copy_audio_to_cpu_does_not_copy_cpu_input():
++    audio = torch.ones(1, 1, 4)
++
++    assert _copy_audio_to_cpu(audio, copy_stream=None) is audio
++
++
++class _RecordingPipeline(OmniVoicePipeline):
++    def __init__(self):
++        torch.nn.Module.__init__(self)
++        self.config = SimpleNamespace(
++            frame_rate=1,
++            num_audio_codebook=8,
++            audio_mask_id=100,
++            audio_chunk_duration=8.0,
++            audio_chunk_threshold=30.0,
++        )
++        self.device = torch.device("cpu")
++        self.sample_rate = 10
++        self.tokenizer = SimpleNamespace(encode=lambda text: SimpleNamespace(ids=[1]))
++        self.duration_estimator = SimpleNamespace(estimate_duration=lambda text, ref_text, ref_len: len(text))
++        self.audio_tokenizer = object()
++        self.num_step = 2
++        self.guidance_scale = 2.0
++        self.t_shift = 0.1
++        self.layer_penalty_factor = 5.0
++        self.position_temperature = 5.0
++        self.class_temperature = 0.0
++        self.calls = []
++        self.draws = []
++        self.reference = torch.full((8, 4), 9)
++
++    def _encode_ref_audio(self, audio_signal, sr):
++        return self.reference
++
++    def _prepare_chunk_input(self, text, lang, instruct, ref_text, ref_audio_tokens, seed, chunks=None):
++        self.calls.append({"text": text, "ref_text": ref_text, "ref_audio_tokens": ref_audio_tokens})
++        return super()._prepare_chunk_input(text, lang, instruct, ref_text, ref_audio_tokens, seed, chunks)
++
++    def generator(self, *, target_lens, generators, **kwargs):
++        tokens = []
++        for length, generator in zip(target_lens, generators, strict=True):
++            self.draws.append((generator, torch.rand((), generator=generator).item()))
++            tokens.append(torch.full((1, 8, length), generator.initial_seed(), dtype=torch.long))
++        return torch.cat(tokens, dim=-1)
++
++    @staticmethod
++    def decoder(tokens):
++        return tokens[:, :1].float()
++
++
++def _request(prompt, *, seed=3, **extra):
++    return SimpleNamespace(
++        prompt=prompt,
++        sampling_params=SimpleNamespace(
++            extra_args=extra,
++            seed=seed,
++            num_inference_steps=2,
++            guidance_scale=None,
++        ),
++    )
++
++
++def _run(pipeline, prompt, *, threshold=0, chunk_duration=8.0, seed=3):
++    return pipeline(
++        SimpleNamespace(
++            requests=[
++                _request(
++                    prompt,
++                    seed=seed,
++                    audio_chunk_duration=chunk_duration,
++                    audio_chunk_threshold=threshold,
++                )
++            ]
++        )
++    )
++
++
++def test_pipeline_marks_invalid_chunking_values_as_client_errors():
++    pipeline = _RecordingPipeline()
++    request = _request("Hello", audio_chunk_duration=0)
++    outputs = pipeline(SimpleNamespace(requests=[request]))
++    assert len(outputs) == 1
++    assert outputs[0].error == "audio_chunk_duration must be a finite positive number"
++    assert outputs[0].error_status_code == 400
++    assert outputs[0].error_type == "BadRequestError"
++    assert not pipeline.draws
++
++    state = SimpleNamespace(prompt=request.prompt, sampling=request.sampling_params, extra={})
++    with pytest.raises(OmniClientError) as error:
++        pipeline.prepare_encode(state)
++    assert error.value.status_code == 400
++    assert error.value.error_type == "BadRequestError"
++
++
++def test_threshold_is_inclusive_and_one_frame_over_uses_chunking():
++    text = "One. Two. Three."
++    pipeline = _RecordingPipeline()
++    _run(pipeline, text, threshold=len(text))
++    assert [call["text"] for call in pipeline.calls] == [text]
++    pipeline.calls.clear()
++    _run(pipeline, text, threshold=len(text) - 1)
++    assert len(pipeline.calls) > 1
++
++
++@pytest.mark.parametrize(
++    ("chunk_duration", "threshold"),
++    [(8.0, 1e308), (1e308, 0.0)],
++)
++def test_extreme_finite_chunking_values_do_not_overflow(chunk_duration, threshold):
++    pipeline = _RecordingPipeline()
++    _run(pipeline, "One. Two. Three.", threshold=threshold, chunk_duration=chunk_duration)
++    assert len(pipeline.calls) == 1
++
++
++def test_explicit_reference_is_reused_for_every_chunk():
++    pipeline = _RecordingPipeline()
++    _run(
++        pipeline,
++        {
++            "input": "First sentence. Second sentence. Third sentence.",
++            "ref_text": "Reference text.",
++            "ref_audio": (torch.ones(4), 10),
++        },
++    )
++    assert len(pipeline.calls) > 1
++    assert all(call["ref_text"] == "Reference text." for call in pipeline.calls)
++    assert all(call["ref_audio_tokens"] is pipeline.reference for call in pipeline.calls)
++
++
++def test_auto_voice_uses_first_chunk_as_fixed_reference_and_advances_generator():
++    pipeline = _RecordingPipeline()
++    _run(pipeline, "First sentence. Second sentence. Third sentence.", seed=3)
++    assert len(pipeline.calls) > 2
++    first = pipeline.calls[0]
++    assert first["ref_text"] is None
++    assert first["ref_audio_tokens"] is None
++    reference = pipeline.calls[1]["ref_audio_tokens"]
++    torch.testing.assert_close(reference, torch.full((8, len(first["text"])), 3, dtype=torch.long))
++    for call in pipeline.calls[1:]:
++        assert call["ref_text"] == first["text"]
++        assert call["ref_audio_tokens"] is reference
++    generator = pipeline.draws[0][0]
++    expected = torch.Generator().manual_seed(3)
++    assert all(draw[0] is generator for draw in pipeline.draws)
++    assert [draw[1] for draw in pipeline.draws] == [torch.rand((), generator=expected).item() for _ in pipeline.draws]
++
++
++def test_mixed_short_and_long_batch_preserves_output_order():
++    pipeline = _RecordingPipeline()
++    requests = [
++        _request("First sentence. Second sentence. Third sentence.", seed=3, audio_chunk_threshold=10),
++        _request("Short", seed=7),
++        _request("Another long sentence. And one more sentence.", seed=5, audio_chunk_threshold=10),
++    ]
++    outputs = pipeline(SimpleNamespace(requests=requests))
++    assert len(outputs) == 3
++    for output, seed in zip(outputs, (3, 7, 5), strict=True):
++        assert output.error is None
++        assert output.output.max().item() == seed
++    torch.testing.assert_close(outputs[1].output, torch.full((1, 1, 5), 7.0))
++    assert sum(generator.initial_seed() == 7 for generator, _ in pipeline.draws) == 1
++
++
++def test_step_decode_resets_schedule_and_retains_generator_until_final_chunk():
++    pipeline = _RecordingPipeline()
++    request = _request("One. Two. Three.", audio_chunk_threshold=0)
++    state = SimpleNamespace(prompt=request.prompt, sampling=request.sampling_params, extra={}, step_index=0)
++    pipeline.prepare_encode(state)
++    generator = state.extra["generator"]
++    count = len(state.extra["prepared"].chunks.texts)
++    assert count > 1
++    for index in range(count):
++        state.extra["tokens"].fill_(index + 1)
++        state.step_index = len(state.timesteps)
++        output = pipeline.post_decode(state)
++        assert state.extra["generator"] is generator
++        if index < count - 1:
++            assert output is None
++            assert state.step_index == 0
++            assert torch.all(state.extra["tokens"] == pipeline.config.audio_mask_id)
++            assert state.timesteps.sum().item() == state.extra["target_len"] * 8
++        else:
++            assert output.output.shape[-1] > state.extra["target_len"]
++            assert state.step_index == len(state.timesteps)
++
++
++def test_generator_uses_and_advances_the_supplied_random_state(monkeypatch):
++    config = OmniVoiceConfig(
++        audio_vocab_size=5,
++        audio_mask_id=4,
++        num_audio_codebook=2,
++        enable_cuda_graph=False,
++        llm_config={
++            "hidden_size": 16,
++            "num_hidden_layers": 0,
++            "num_attention_heads": 2,
++            "num_key_value_heads": 1,
++            "intermediate_size": 32,
++            "vocab_size": 32,
++            "max_position_embeddings": 32,
++            "head_dim": 8,
++        },
++    )
++    model = OmniVoiceGenerator(config, od_config=SimpleNamespace())
++    monkeypatch.setattr(
++        model,
++        "_transformer_forward",
++        lambda inputs_embeds, cu_seqs, max_seqlen=None, rope_table=None: torch.zeros_like(inputs_embeds),
++    )
++    generator = torch.Generator().manual_seed(4)
++
++    def run_generation():
++        input_ids = torch.full((6, 2), config.audio_mask_id, dtype=torch.long)
++        return model(
++            input_ids=input_ids,
++            audio_mask=torch.ones(6, dtype=torch.bool),
++            cond_lens=[3],
++            target_lens=[3],
++            generators=[generator],
++            num_step=2,
++        )
++
++    state_before = generator.get_state()
++    run_generation()
++    state_after_first_call = generator.get_state()
++    run_generation()
++    state_after_second_call = generator.get_state()
++
++    assert not torch.equal(state_before, state_after_first_call)
++    assert not torch.equal(state_after_first_call, state_after_second_call)
++
++
++def test_generator_rejects_wrong_number_of_supplied_generators():
++    model = SimpleNamespace(config=SimpleNamespace(audio_mask_id=4, num_audio_codebook=2))
++    with pytest.raises(ValueError, match="one generator per request"):
++        OmniVoiceGenerator.forward(
++            model,
++            input_ids=torch.full((6, 2), 4, dtype=torch.long),
++            audio_mask=torch.ones(6, dtype=torch.bool),
++            cond_lens=[3],
++            target_lens=[3],
++            generators=[],
++        )
++
++
++def test_duration_estimate_uses_reference_text_and_token_count_together():
++    calls = []
++    pipeline = SimpleNamespace(
++        duration_estimator=SimpleNamespace(
++            estimate_duration=lambda text, ref_text, ref_length: calls.append((text, ref_text, ref_length)) or 42.8
++        )
++    )
++    ref_audio_tokens = torch.zeros(8, 17)
++
++    target_length = OmniVoicePipeline._estimate_target_length(
++        pipeline,
++        "Target text.",
++        "Reference text.",
++        ref_audio_tokens,
++    )
++
++    assert target_length == 42
++    assert calls == [("Target text.", "Reference text.", 17)]
+diff --git a/tests/diffusion/test_diffusion_request.py b/tests/diffusion/test_diffusion_request.py
+index a3a2e410d..8956b260e 100644
+--- a/tests/diffusion/test_diffusion_request.py
++++ b/tests/diffusion/test_diffusion_request.py
+@@ -94,6 +94,48 @@ def test_tp_seed_same_across_ranks_and_varies_across_requests():
+     assert len(set(seeds)) == n_requests, f"Expected {n_requests} unique seeds but got {len(set(seeds))}: {seeds}"
+ 
+ 
++def test_extra_args_seed_is_copied_without_removing_model_owned_value():
++    request = OmniDiffusionRequest(
++        prompt={"prompt": "test"},
++        sampling_params=OmniDiffusionSamplingParams(extra_args={"seed": 17}),
++        request_id="request-test",
++    )
++
++    assert request.sampling_params.seed == 17
++    assert request.sampling_params.extra_args["seed"] == 17
++
++
++def test_canonical_seed_does_not_remove_model_owned_extra_seed():
++    request = OmniDiffusionRequest(
++        prompt={"prompt": "test"},
++        sampling_params=OmniDiffusionSamplingParams(seed=42, extra_args={"seed": 17}),
++        request_id="request-test",
++    )
++
++    assert request.sampling_params.seed == 42
++    assert request.sampling_params.extra_args["seed"] == 17
++
++
++@pytest.mark.parametrize("seed", [True, 1.5, "17", -1, 2**63])
++def test_legacy_extra_args_seed_rejects_invalid_values(seed):
++    with pytest.raises(ValueError, match="seed must"):
++        OmniDiffusionRequest(
++            prompt={"prompt": "test"},
++            sampling_params=OmniDiffusionSamplingParams(extra_args={"seed": seed}),
++            request_id="request-test",
++        )
++
++
++@pytest.mark.parametrize("seed", [True, 1.5, "17", -1, 2**63])
++def test_canonical_seed_rejects_invalid_values(seed):
++    with pytest.raises(ValueError, match="seed must"):
++        OmniDiffusionRequest(
++            prompt={"prompt": "test"},
++            sampling_params=OmniDiffusionSamplingParams(seed=seed),
++            request_id="request-test",
++        )
++
++
+ def _request_with_guidance(**sampling_kwargs) -> OmniDiffusionRequest:
+     return OmniDiffusionRequest(
+         prompt={"prompt": "a cup of coffee on a table"},
+diff --git a/tests/entrypoints/openai_api/test_serving_speech.py b/tests/entrypoints/openai_api/test_serving_speech.py
+index dc49a7e21..66720d20c 100644
+--- a/tests/entrypoints/openai_api/test_serving_speech.py
++++ b/tests/entrypoints/openai_api/test_serving_speech.py
+@@ -179,6 +179,7 @@ class TestAudioMixin:
+ def create_mock_audio_output_for_test(
+     request_id: str = "speech-mock-123",
+     metrics: dict | None = None,
++    peak_memory_mb: float = 0.0,
+ ) -> OmniRequestOutput:
+     class MockCompletionOutput:
+         def __init__(self, index: int = 0):
+@@ -214,6 +215,7 @@ def create_mock_audio_output_for_test(
+         final_output_type="audio",
+     )
+     output.metrics = metrics
++    output.peak_memory_mb = peak_memory_mb
+     return output
+ 
+ 
+@@ -836,18 +838,28 @@ class TestSpeechAPI:
+         assert b"Invalid voice" in response.body
+ 
+     @pytest.mark.asyncio
+-    async def test_create_diffusion_speech_extra_params(self, mocker: MockerFixture):
+-        """Test diffusion parameters reach StepScheduler as standard fields."""
++    @pytest.mark.parametrize(
++        ("request_seed", "extra_seed", "expected_seed"),
++        [(None, None, 99), (None, 17, 17), (42, 17, 42)],
++    )
++    async def test_create_diffusion_speech_extra_params(
++        self,
++        mocker: MockerFixture,
++        request_seed,
++        extra_seed,
++        expected_seed,
++    ):
++        """Test diffusion speech extra_params and seed propagation."""
+         # Mock the engine client
+         mock_engine = mocker.MagicMock()
+ 
+         # Mock default sampling params
+-        mock_sampling_param = OmniDiffusionSamplingParams(extra_args={"existing_arg": "value"})
++        mock_sampling_param = OmniDiffusionSamplingParams(seed=99, extra_args={"existing_arg": "value"})
+         mock_engine.default_sampling_params_list = [mock_sampling_param]
+ 
+         # Mock generate to yield a valid OmniRequestOutput
+         async def mock_generate(*args, **kwargs):
+-            yield create_mock_audio_output_for_test()
++            yield create_mock_audio_output_for_test(peak_memory_mb=1234.25)
+ 
+         mock_engine.generate = mocker.MagicMock(side_effect=mock_generate)
+ 
+@@ -858,14 +870,18 @@ class TestSpeechAPI:
+             server, "create_audio", return_value=mocker.MagicMock(audio_data=b"dummy", media_type="audio/wav")
+         )
+ 
++        extra_params = {
++            "new_arg": 123,
++            "existing_arg": "new_value",
++            "num_inference_steps": 12,
++            "guidance_scale": 7.0,
++        }
++        if extra_seed is not None:
++            extra_params["seed"] = extra_seed
+         req = OpenAICreateSpeechRequest(
+             input="Hello",
+-            extra_params={
+-                "new_arg": 123,
+-                "existing_arg": "new_value",
+-                "num_inference_steps": 12,
+-                "guidance_scale": 7.0,
+-            },
++            seed=request_seed,
++            extra_params=extra_params,
+         )
+ 
+         response = await server.create_speech(req)
+@@ -873,6 +889,7 @@ class TestSpeechAPI:
+         assert response.status_code == 200
+         assert response.media_type == "audio/wav"
+         assert response.body == b"dummy"
++        assert response.headers["x-peak-memory-mb"] == "1234.250"
+ 
+         # Verify generate was called
+         mock_engine.generate.assert_called_once()
+@@ -883,6 +900,7 @@ class TestSpeechAPI:
+ 
+         # Verify it was deepcopied and updated
+         assert passed_params is not mock_engine.default_sampling_params_list
++        assert passed_params[0].seed == expected_seed
+         assert passed_params[0].extra_args == {
+             "existing_arg": "new_value",
+             "new_arg": 123,
+@@ -976,6 +994,18 @@ class TestSpeechAPI:
+         assert expected_message in response.body.decode()
+         mock_engine.generate.assert_not_called()
+ 
++    @pytest.mark.asyncio
++    @pytest.mark.parametrize("seed", [True, 1.5, "17", -1, 2**63])
++    async def test_create_diffusion_speech_rejects_invalid_extra_seed(self, mocker: MockerFixture, seed):
++        mock_engine = mocker.MagicMock()
++        mock_engine.default_sampling_params_list = [mocker.MagicMock(seed=99, extra_args={})]
++        server = OmniOpenAIServingSpeech.for_diffusion(diffusion_engine=mock_engine, model_name="test-model")
++
++        response = await server.create_speech(OpenAICreateSpeechRequest(input="Hello", extra_params={"seed": seed}))
++
++        assert response.status_code == 400
++        mock_engine.generate.assert_not_called()
++
+ 
+ class TestTTSMethods:
+     """Unit tests for TTS validation and parameter building."""
+diff --git a/vllm_omni/diffusion/models/omnivoice/chunking.py b/vllm_omni/diffusion/models/omnivoice/chunking.py
+new file mode 100644
+index 000000000..794e9e370
+--- /dev/null
++++ b/vllm_omni/diffusion/models/omnivoice/chunking.py
+@@ -0,0 +1,243 @@
++# SPDX-License-Identifier: Apache-2.0
++# SPDX-FileCopyrightText: Copyright contributors to the vLLM project
++# Copyright 2026 Xiaomi Corp. (authors: Han Zhu)
++
++from __future__ import annotations
++
++import torch
++
++_SENTENCE_BOUNDARIES = frozenset(".,;:!?。，；：！？")
++_CLAUSE_BOUNDARIES = frozenset(",;:，；：、")
++_CLOSING_MARKS = frozenset("\"'“”‘’）]》>」】")
++_ABBREVIATIONS = frozenset(
++    {
++        "Mr.",
++        "Mrs.",
++        "Ms.",
++        "Dr.",
++        "Prof.",
++        "Sr.",
++        "Jr.",
++        "Rev.",
++        "Fr.",
++        "Hon.",
++        "Pres.",
++        "Gov.",
++        "Capt.",
++        "Gen.",
++        "Sen.",
++        "Rep.",
++        "Col.",
++        "Maj.",
++        "Lt.",
++        "Cmdr.",
++        "Sgt.",
++        "Cpl.",
++        "Co.",
++        "Corp.",
++        "Inc.",
++        "Ltd.",
++        "Est.",
++        "Dept.",
++        "St.",
++        "Ave.",
++        "Blvd.",
++        "Rd.",
++        "Mt.",
++        "Ft.",
++        "No.",
++        "Jan.",
++        "Feb.",
++        "Mar.",
++        "Apr.",
++        "Aug.",
++        "Sep.",
++        "Sept.",
++        "Oct.",
++        "Nov.",
++        "Dec.",
++        "i.e.",
++        "e.g.",
++        "vs.",
++        "Vs.",
++        "Etc.",
++        "approx.",
++        "fig.",
++        "def.",
++        "apt.",
++        "D.I.Y.",
++        "D.I.Y",
++        "R.S.V.P.",
++        "R.S.V.P",
++        "P.S.",
++        "P.S",
++        "al.",
++    }
++)
++
++
++def _period_belongs_to_abbreviation(text: str, period_index: int) -> bool:
++    word_start = period_index
++    while word_start > 0 and not text[word_start - 1].isspace():
++        word_start -= 1
++
++    word_end = period_index + 1
++    while word_end < len(text) and not text[word_end].isspace():
++        word_end += 1
++
++    word = text[word_start:word_end].rstrip("".join(_CLOSING_MARKS | (_SENTENCE_BOUNDARIES - {"."})))
++    return word in _ABBREVIATIONS
++
++
++def _split_at_sentence_boundaries(text: str) -> list[str]:
++    sentences: list[list[str]] = []
++    current_sentence: list[str] = []
++
++    for index, character in enumerate(text):
++        if not current_sentence and sentences and (character in _SENTENCE_BOUNDARIES or character in _CLOSING_MARKS):
++            sentences[-1].append(character)
++            continue
++
++        current_sentence.append(character)
++        if character not in _SENTENCE_BOUNDARIES:
++            continue
++        if character == "." and _period_belongs_to_abbreviation(text, index):
++            continue
++
++        sentences.append(current_sentence)
++        current_sentence = []
++
++    if current_sentence:
++        sentences.append(current_sentence)
++    return ["".join(sentence) for sentence in sentences]
++
++
++def _merge_sentences(sentences: list[str], max_characters: int) -> list[str]:
++    chunks: list[str] = []
++    current_chunk = ""
++    for sentence in sentences:
++        if len(current_chunk) + len(sentence) <= max_characters:
++            current_chunk += sentence
++        else:
++            if current_chunk:
++                chunks.append(current_chunk)
++            current_chunk = sentence
++    if current_chunk:
++        chunks.append(current_chunk)
++    return chunks
++
++
++def _merge_short_chunks(
++    chunks: list[str],
++    min_characters: int,
++    max_characters: int,
++) -> list[str]:
++    if len(chunks) < 2:
++        return chunks
++    if len(chunks[0]) < min_characters and len(chunks[0]) + len(chunks[1]) <= max_characters:
++        chunks[1] = chunks[0] + chunks[1]
++        chunks = chunks[1:]
++
++    merged: list[str] = []
++    for chunk in chunks:
++        if len(chunk) < min_characters and merged and len(merged[-1]) + len(chunk) <= max_characters:
++            merged[-1] += chunk
++        else:
++            merged.append(chunk)
++    return merged
++
++
++def _split_oversized_chunk(text: str, max_characters: int) -> list[str]:
++    chunks: list[str] = []
++    remaining = text.strip()
++    while len(remaining) > max_characters:
++        window = remaining[:max_characters]
++        split_index = max(
++            (index + 1 for index, character in enumerate(window) if character in _CLAUSE_BOUNDARIES),
++            default=0,
++        )
++        if split_index == 0:
++            split_index = max(
++                (index for index, character in enumerate(window) if character.isspace()),
++                default=0,
++            )
++        if split_index == 0:
++            split_index = max_characters
++
++        chunks.append(remaining[:split_index].strip())
++        remaining = remaining[split_index:].strip()
++
++    if remaining:
++        chunks.append(remaining)
++    return chunks
++
++
++def split_text_into_chunks(
++    text: str,
++    max_characters: int,
++    min_characters: int = 3,
++) -> list[str]:
++    """Split text at sentence boundaries, then bound oversized sentences."""
++    if max_characters <= 0:
++        raise ValueError("max_characters must be positive")
++
++    sentences = _split_at_sentence_boundaries(text)
++    chunks = _merge_short_chunks(
++        _merge_sentences(sentences, max_characters),
++        min_characters,
++        max_characters,
++    )
++    return [
++        bounded_chunk
++        for chunk in chunks
++        for bounded_chunk in _split_oversized_chunk(chunk, max_characters)
++        if bounded_chunk
++    ]
++
++
++def join_audio_chunks(
++    chunks: list[torch.Tensor],
++    sample_rate: int,
++    silence_duration_seconds: float = 0.3,
++) -> torch.Tensor:
++    """Join decoded audio chunks with a fade and short silence at each boundary."""
++    if not chunks:
++        raise ValueError("chunks must not be empty")
++    if len(chunks) == 1:
++        return chunks[0]
++
++    boundary_samples = int(silence_duration_seconds * sample_rate) // 3
++    # Work on copies so changing each chunk's start and end does not change the input audio.
++    joined_parts = [chunks[0].clone()]
++    for chunk in chunks[1:]:
++        previous_chunk = joined_parts[-1]
++        fade_out_samples = min(boundary_samples, previous_chunk.shape[-1])
++        if fade_out_samples:
++            fade_out = torch.linspace(
++                1,
++                0,
++                fade_out_samples,
++                dtype=previous_chunk.dtype,
++                device=previous_chunk.device,
++            )
++            previous_chunk[..., -fade_out_samples:] *= fade_out
++
++        fade_in_audio = chunk.clone()
++        fade_in_samples = min(boundary_samples, fade_in_audio.shape[-1])
++        if fade_in_samples:
++            fade_in = torch.linspace(
++                0,
++                1,
++                fade_in_samples,
++                dtype=fade_in_audio.dtype,
++                device=fade_in_audio.device,
++            )
++            fade_in_audio[..., :fade_in_samples] *= fade_in
++
++        silence = torch.zeros(
++            (*previous_chunk.shape[:-1], boundary_samples),
++            dtype=previous_chunk.dtype,
++            device=previous_chunk.device,
++        )
++        joined_parts.extend([silence, fade_in_audio])
++    return torch.cat(joined_parts, dim=-1)
+diff --git a/vllm_omni/diffusion/models/omnivoice/pipeline_omnivoice.py b/vllm_omni/diffusion/models/omnivoice/pipeline_omnivoice.py
+index bad1c6154..41c0ee142 100644
+--- a/vllm_omni/diffusion/models/omnivoice/pipeline_omnivoice.py
++++ b/vllm_omni/diffusion/models/omnivoice/pipeline_omnivoice.py
+@@ -6,7 +6,7 @@ OmniVoice TTS Pipeline for vLLM-Omni diffusion engine.
+ Single-stage pipeline that runs the full text-to-speech flow:
+   text → tokenize → 32-step iterative unmasking → 8-codebook tokens → DAC decode → 24kHz audio
+ 
+-Uses request-mode execution (all steps in one forward() call).
++Supports request-mode and step-mode execution with bounded text chunks.
+ """
+ 
+ from __future__ import annotations
+@@ -17,7 +17,7 @@ import os
+ import random
+ import re
+ from collections.abc import Iterable, Sequence
+-from dataclasses import dataclass
++from dataclasses import dataclass, field
+ from typing import Any, ClassVar
+ 
+ import numpy as np
+@@ -25,10 +25,12 @@ import torch
+ from tokenizers import Tokenizer as HFTokenizer
+ from torch import nn
+ from vllm.logger import init_logger
++from vllm.utils.platform_utils import is_pin_memory_available
+ 
+ from vllm_omni.diffusion.data import DiffusionOutput, OmniDiffusionConfig
+ from vllm_omni.diffusion.distributed.utils import get_local_device
+ from vllm_omni.diffusion.models.interface import SupportAudioOutput
++from vllm_omni.diffusion.models.omnivoice.chunking import join_audio_chunks, split_text_into_chunks
+ from vllm_omni.diffusion.worker.input_batch import InputBatch
+ from vllm_omni.diffusion.worker.request_batch import DiffusionRequestBatch
+ from vllm_omni.diffusion.worker.utils import StepRequestState
+@@ -53,6 +55,18 @@ import torchaudio
+ logger = init_logger(__name__)
+ 
+ 
++@dataclass
++class _OmniVoiceChunks:
++    texts: list[str]
++    lang: str
++    instruct: str
++    ref_text: str | None
++    ref_audio_tokens: torch.Tensor | None
++    index: int = 0
++    audio: list[torch.Tensor] = field(default_factory=list)
++    copy_stream: torch.Stream | None = None
++
++
+ @dataclass
+ class _PreparedOmniVoiceRequest:
+     input_ids: torch.Tensor
+@@ -60,6 +74,7 @@ class _PreparedOmniVoiceRequest:
+     cond_len: int
+     target_len: int
+     seed: int | None
++    chunks: _OmniVoiceChunks | None = None
+ 
+ 
+ def get_omnivoice_post_process_func(od_config: OmniDiffusionConfig):
+@@ -143,6 +158,46 @@ def _tokenize_with_nonverbal_tags(text: str, tokenizer) -> list[int]:
+     return combined
+ 
+ 
++def _parse_chunking_seconds(
++    name: str,
++    value: object,
++    *,
++    allow_zero: bool,
++) -> float:
++    if isinstance(value, bool):
++        raise OmniClientError(f"{name} must be a number")
++    try:
++        seconds = float(value)
++    except (TypeError, ValueError) as error:
++        raise OmniClientError(f"{name} must be a number") from error
++
++    if not math.isfinite(seconds) or seconds < 0 or (seconds == 0 and not allow_zero):
++        requirement = "non-negative" if allow_zero else "positive"
++        raise OmniClientError(f"{name} must be a finite {requirement} number")
++    return seconds
++
++
++def _copy_audio_to_cpu(
++    audio: torch.Tensor,
++    copy_stream: torch.Stream | None,
++) -> torch.Tensor:
++    if audio.device.type == "cpu":
++        return audio
++    if copy_stream is None:
++        return audio.detach().cpu()
++
++    host_audio = torch.empty_like(audio, device="cpu", pin_memory=True)
++    compute_stream = torch.accelerator.current_stream()
++    copy_stream.wait_stream(compute_stream)
++    torch.accelerator.set_stream(copy_stream)
++    try:
++        host_audio.copy_(audio, non_blocking=True)
++        audio.record_stream(copy_stream)
++    finally:
++        torch.accelerator.set_stream(compute_stream)
++    return host_audio
++
++
+ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+     """OmniVoice text-to-speech pipeline for the diffusion engine.
+ 
+@@ -238,6 +293,19 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+         instruct = "None"
+         voice_name = None
+         seed = extra.get("seed", None)
++        try:
++            chunk_duration = _parse_chunking_seconds(
++                "audio_chunk_duration",
++                extra.get("audio_chunk_duration", self.config.audio_chunk_duration),
++                allow_zero=False,
++            )
++            chunk_threshold = _parse_chunking_seconds(
++                "audio_chunk_threshold",
++                extra.get("audio_chunk_threshold", self.config.audio_chunk_threshold),
++                allow_zero=True,
++            )
++        except OmniClientError as error:
++            return DiffusionOutput.from_exception(error)
+ 
+         if isinstance(prompt, dict):
+             text = prompt.get("input") or prompt.get("text") or prompt.get("prompt")
+@@ -280,18 +348,6 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+             if not text:
+                 return DiffusionOutput(error="Empty text prompt")
+ 
+-        target_len = self.duration_estimator.estimate_duration(text, "Nice to meet you.", 25)
+-        target_len = max(1, int(target_len))
+-
+-        style_text = f"<|denoise|><|lang_start|>{lang}<|lang_end|><|instruct_start|>{instruct}<|instruct_end|>"
+-        full_text = _combine_text(ref_text=ref_text, text=text)
+-        wrapped_text = f"<|text_start|>{full_text}<|text_end|>"
+-        style_tokens = self.tokenizer.encode(style_text).ids
+-        text_tokens = _tokenize_with_nonverbal_tags(wrapped_text, self.tokenizer)
+-        encoding_ids = style_tokens + text_tokens
+-        text_tokens_tensor = torch.tensor(encoding_ids, dtype=torch.long, device=self.device)
+-        text_len = text_tokens_tensor.shape[0]
+-
+         ref_audio_tokens = None
+         if ref_audio is not None:
+             if self.audio_tokenizer is None:
+@@ -320,6 +376,45 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+                     self._speaker_cache.put(cache_key, {"ref_audio_tokens": ref_audio_tokens.cpu()})
+                     logger.debug("Speaker cache STORE for OmniVoice speaker '%s'", voice_name)
+ 
++        target_len = self._estimate_target_length(text, ref_text, ref_audio_tokens)
++        chunks = None
++        if target_len > chunk_threshold * self.config.frame_rate:
++            frame_budget = chunk_duration * self.config.frame_rate
++            max_characters = (
++                len(text) if frame_budget >= target_len else max(1, int(frame_budget * len(text) / target_len))
++            )
++            texts = split_text_into_chunks(text, max_characters)
++            chunks = _OmniVoiceChunks(texts, lang, instruct, ref_text, ref_audio_tokens)
++            text = texts[0]
++        return self._prepare_chunk_input(text, lang, instruct, ref_text, ref_audio_tokens, seed, chunks)
++
++    def _estimate_target_length(self, text: str, ref_text: str | None, ref_audio_tokens: torch.Tensor | None) -> int:
++        if ref_audio_tokens is None or not ref_text:
++            ref_text, ref_length = "Nice to meet you.", 25
++        else:
++            ref_length = ref_audio_tokens.shape[-1]
++        return max(1, int(self.duration_estimator.estimate_duration(text, ref_text, ref_length)))
++
++    def _prepare_chunk_input(
++        self,
++        text: str,
++        lang: str,
++        instruct: str,
++        ref_text: str | None,
++        ref_audio_tokens: torch.Tensor | None,
++        seed: int | None,
++        chunks: _OmniVoiceChunks | None = None,
++    ) -> _PreparedOmniVoiceRequest:
++        target_len = self._estimate_target_length(text, ref_text, ref_audio_tokens)
++        style_text = f"<|denoise|><|lang_start|>{lang}<|lang_end|><|instruct_start|>{instruct}<|instruct_end|>"
++        full_text = _combine_text(ref_text=ref_text, text=text)
++        wrapped_text = f"<|text_start|>{full_text}<|text_end|>"
++        style_tokens = self.tokenizer.encode(style_text).ids
++        text_tokens = _tokenize_with_nonverbal_tags(wrapped_text, self.tokenizer)
++        encoding_ids = style_tokens + text_tokens
++        text_tokens_tensor = torch.tensor(encoding_ids, dtype=torch.long, device=self.device)
++        text_len = text_tokens_tensor.shape[0]
++
+         num_cb = self.config.num_audio_codebook
+         mask_id = self.config.audio_mask_id
+         text_ids = text_tokens_tensor.unsqueeze(0).repeat(num_cb, 1)
+@@ -343,6 +438,7 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+             cond_len=cond_len,
+             target_len=target_len,
+             seed=seed,
++            chunks=chunks,
+         )
+ 
+     def _collate_request_inputs(
+@@ -374,17 +470,23 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+         if isinstance(prepared, DiffusionOutput):
+             raise OmniClientError(prepared.error or "OmniVoice request preparation failed")
+ 
++        seed = state.sampling.seed if state.sampling.seed is not None else prepared.seed
++        state.extra["generator"] = torch.Generator(device=self.device).manual_seed(
++            seed if seed is not None else random.randint(0, 2**63 - 1)
++        )
++        return self._prepare_step_chunk(state, prepared)
++
++    def _prepare_step_chunk(self, state: StepRequestState, prepared: _PreparedOmniVoiceRequest) -> StepRequestState:
++        state.extra["prepared"] = prepared
++        state.step_index = 0
+         prepared_request = prepared
+         cond_len = prepared_request.cond_len
+         target_len = prepared_request.target_len
+         input_ids = prepared_request.input_ids
+         audio_mask = prepared_request.audio_mask
+-        seed = prepared_request.seed
+         device = self.device
+         mask_id = self.config.audio_mask_id
+         num_codebooks = self.config.num_audio_codebook
+-        if seed is None:
+-            seed = random.randint(0, 2**63 - 1)
+         num_step = (
+             state.sampling.num_inference_steps if state.sampling.num_inference_steps is not None else self.num_step
+         )
+@@ -415,7 +517,6 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+         schedules = torch.tensor(sched, dtype=torch.long, device=device)
+ 
+         layer_ids = torch.arange(num_codebooks, device=device).view(1, -1, 1)
+-        generator = torch.Generator(device=device).manual_seed(seed)
+ 
+         guidance_scale = (
+             state.sampling.guidance_scale if state.sampling.guidance_scale is not None else self.guidance_scale
+@@ -425,7 +526,6 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+         state.guidance = guidance_scale
+         state.extra["schedules"] = schedules
+         state.extra["layer_ids"] = layer_ids
+-        state.extra["generator"] = generator
+         state.extra["t_shift"] = t_shift
+         state.extra["cond_len"] = cond_len
+         state.extra["target_len"] = target_len
+@@ -540,64 +640,104 @@ class OmniVoicePipeline(nn.Module, SupportAudioOutput):
+         state.latents = noise_pred
+         state.step_index += 1
+ 
++    def _decode_chunk(
++        self, prepared: _PreparedOmniVoiceRequest, tokens: torch.Tensor
++    ) -> tuple[DiffusionOutput | None, _PreparedOmniVoiceRequest | None]:
++        audio = self.decoder(tokens)
++        chunks = prepared.chunks
++        if chunks is None:
++            return DiffusionOutput(output=audio), None
++        if audio.device.type != "cpu" and is_pin_memory_available() and chunks.copy_stream is None:
++            chunks.copy_stream = torch.Stream(device=audio.device)
++        chunks.audio.append(_copy_audio_to_cpu(audio, chunks.copy_stream))
++        if chunks.index == 0 and chunks.ref_audio_tokens is None:
++            chunks.ref_text = chunks.texts[0]
++            # Clone to avoid retaining the other requests' tokens from a packed batch.
++            chunks.ref_audio_tokens = tokens[0].clone()
++        chunks.index += 1
++        if chunks.index == len(chunks.texts):
++            if chunks.copy_stream is not None:
++                chunks.copy_stream.synchronize()
++            return DiffusionOutput(output=join_audio_chunks(chunks.audio, self.sample_rate)), None
++        next_prepared = self._prepare_chunk_input(
++            chunks.texts[chunks.index],
++            chunks.lang,
++            chunks.instruct,
++            chunks.ref_text,
++            chunks.ref_audio_tokens,
++            prepared.seed,
++            chunks,
++        )
++        return None, next_prepared
++
+     def post_decode(self, state: StepRequestState, **kwargs: Any):
+         tokens = state.extra["tokens"]
+         if tokens.dim() == 2:
+             tokens = tokens.unsqueeze(0)
+-        audio = self.decoder(tokens)
+-        return DiffusionOutput(output=audio)
++        result, next_prepared = self._decode_chunk(state.extra["prepared"], tokens)
++        if next_prepared is not None:
++            # The runner checks completion after post_decode. Reset for the next
++            # chunk, retaining the request's generator and completed CPU audio.
++            self._prepare_step_chunk(state, next_prepared)
++        return result
+ 
+     @torch.inference_mode()
+     def forward(self, req: DiffusionRequestBatch) -> list[DiffusionOutput]:
+-        """Generate speech audio from text, optionally with voice cloning.
+-
+-        Accepts either a plain text prompt or a structured dict:
+-          {"text": "...", "ref_audio": (samples, sr), "ref_text": "...",
+-           "lang": "...", "instruct": "..."}
+-        """
++        """Generate one chunk per active request per round, keeping output order."""
+         prepared_requests: list[_PreparedOmniVoiceRequest] = []
+         outputs = [None] * len(req.requests)
+         prepared_indices: list[int] = []
++        generators: list[torch.Generator] = []
+         for i, request in enumerate(req.requests):
+-            prompt = request.prompt if request.prompt else ""
+-            extra = request.sampling_params.extra_args or {}
+-            prepared = self._prepare_request_input(prompt, extra)
++            prepared = self._prepare_request_input(request.prompt or "", request.sampling_params.extra_args or {})
+             if isinstance(prepared, DiffusionOutput):
+                 outputs[i] = prepared
+                 continue
+             prepared_indices.append(i)
+             prepared_requests.append(prepared)
++            seed = request.sampling_params.seed
++            if seed is None:
++                seed = prepared.seed
++            generators.append(
++                torch.Generator(device=self.device).manual_seed(
++                    seed if seed is not None else random.randint(0, 2**63 - 1)
++                )
++            )
+ 
+         if not prepared_requests:
+             return outputs
+ 
+-        batch_target_len = [request.target_len for request in prepared_requests]
+-        batch_seeds = [request.seed for request in prepared_requests]
+-        batch_input_ids, batch_audio_mask, batch_cond_lens = self._collate_request_inputs(prepared_requests)
+-        # Run 32-step iterative unmasking
+         sampling = req.requests[0].sampling_params
+         num_step = sampling.num_inference_steps if sampling.num_inference_steps is not None else self.num_step
+         guidance_scale = sampling.guidance_scale if sampling.guidance_scale is not None else self.guidance_scale
+-        tokens = self.generator(
+-            input_ids=batch_input_ids,
+-            audio_mask=batch_audio_mask,
+-            cond_lens=batch_cond_lens,
+-            target_lens=batch_target_len,
+-            num_step=num_step,
+-            guidance_scale=guidance_scale,
+-            t_shift=self.t_shift,
+-            layer_penalty_factor=self.layer_penalty_factor,
+-            position_temperature=self.position_temperature,
+-            class_temperature=self.class_temperature,
+-            seed=batch_seeds,
+-        )
+-
+-        target_offset = 0
+-        for i, target_len in enumerate(batch_target_len):
+-            request_tokens = tokens[:, :, target_offset : target_offset + target_len]
+-            audio = self.decoder(request_tokens)
+-            outputs[prepared_indices[i]] = DiffusionOutput(output=audio)
+-            target_offset += target_len
++        while prepared_requests:
++            target_lens = [request.target_len for request in prepared_requests]
++            input_ids, audio_mask, cond_lens = self._collate_request_inputs(prepared_requests)
++            tokens = self.generator(
++                input_ids=input_ids,
++                audio_mask=audio_mask,
++                cond_lens=cond_lens,
++                target_lens=target_lens,
++                generators=generators,
++                num_step=num_step,
++                guidance_scale=guidance_scale,
++                t_shift=self.t_shift,
++                layer_penalty_factor=self.layer_penalty_factor,
++                position_temperature=self.position_temperature,
++                class_temperature=self.class_temperature,
++            )
++            next_requests, next_indices, next_generators = [], [], []
++            offset = 0
++            for prepared, index, generator in zip(prepared_requests, prepared_indices, generators):
++                request_tokens = tokens[:, :, offset : offset + prepared.target_len]
++                result, next_prepared = self._decode_chunk(prepared, request_tokens)
++                outputs[index] = result
++                if next_prepared is not None:
++                    next_requests.append(next_prepared)
++                    next_indices.append(index)
++                    next_generators.append(generator)
++                offset += prepared.target_len
++            prepared_requests, prepared_indices, generators = next_requests, next_indices, next_generators
+         return outputs
+ 
+     def load_weights(self, weights: Iterable[tuple[str, torch.Tensor]]) -> set[str]:
+diff --git a/vllm_omni/diffusion/request.py b/vllm_omni/diffusion/request.py
+index b4125dcde..a51005c9d 100644
+--- a/vllm_omni/diffusion/request.py
++++ b/vllm_omni/diffusion/request.py
+@@ -17,6 +17,14 @@ DUMMY_DIFFUSION_REQUEST_ID = "dummy_req_id"
+ _DUMMY_DIFFUSION_REQUEST_ID_PREFIX = f"{DUMMY_DIFFUSION_REQUEST_ID}/"
+ 
+ 
++def validate_diffusion_seed(seed: Any) -> int:
++    if isinstance(seed, bool) or not isinstance(seed, int):
++        raise ValueError("seed must be an integer")
++    if not 0 <= seed <= 2**63 - 1:
++        raise ValueError("seed must be between 0 and 2**63 - 1")
++    return seed
++
++
+ def resolve_video_num_frames(
+     num_frames: int | None,
+     *,
+@@ -90,6 +98,14 @@ class OmniDiffusionRequest:
+         if not isinstance(self.request_id, str) or not self.request_id:
+             raise ValueError("OmniDiffusionRequest.request_id must be a non-empty string.")
+ 
++        legacy_seed = self.sampling_params.extra_args.get("seed")
++        if legacy_seed is not None:
++            legacy_seed = validate_diffusion_seed(legacy_seed)
++        if self.sampling_params.seed is None and legacy_seed is not None:
++            self.sampling_params.seed = legacy_seed
++        if self.sampling_params.seed is not None:
++            self.sampling_params.seed = validate_diffusion_seed(self.sampling_params.seed)
++
+         # When neither a generator nor a seed is provided, assign a random seed
+         # so that all ranks derive the same generator state.
+         if self.sampling_params.generator is None and self.sampling_params.seed is None:
+diff --git a/vllm_omni/entrypoints/openai/serving_speech.py b/vllm_omni/entrypoints/openai/serving_speech.py
+index 3a9520574..c57496690 100644
+--- a/vllm_omni/entrypoints/openai/serving_speech.py
++++ b/vllm_omni/entrypoints/openai/serving_speech.py
+@@ -3,6 +3,7 @@
+ 
+ import asyncio
+ import base64
++import copy
+ import hashlib
+ import io
+ import json
+@@ -38,6 +39,7 @@ from vllm.v1.engine.exceptions import EngineDeadError, EngineGenerateError
+ 
+ from vllm_omni.config.speech_cache import SpeechCacheConfig
+ from vllm_omni.config.stage_config import StagePipelineConfig
++from vllm_omni.diffusion.request import validate_diffusion_seed
+ from vllm_omni.entrypoints.openai.audio_utils_mixin import AudioMixin, StreamingAudioResampler
+ from vllm_omni.entrypoints.openai.errors import InvalidPresetVoiceReferenceError, InvalidVoiceReferenceError
+ from vllm_omni.entrypoints.openai.protocol.audio import (
+@@ -2431,14 +2433,17 @@ class OmniOpenAIServingSpeech(OpenAIServing, AudioMixin):
+             if request.extra_params is not None and not isinstance(request.extra_params, dict):
+                 raise ValueError("extra_params must be a JSON object/dict.")
+             extra = dict(request.extra_params or {})
++            seed = extra.pop("seed", None)
+             if request.seed is not None:
+-                extra["seed"] = request.seed
++                seed = request.seed
++            if seed is not None:
++                seed = validate_diffusion_seed(seed)
+             # Apply extra_params from the request to sampling params
+             sampling_params_list = self._diffusion_engine.default_sampling_params_list
+-            if extra:
+-                import copy
+-
++            if extra or seed is not None:
+                 sampling_params_list = copy.deepcopy(sampling_params_list)
++                if seed is not None:
++                    sampling_params_list[0].seed = seed
+                 if sampling_params_list[0].extra_args is None:
+                     sampling_params_list[0].extra_args = {}
+                 sampling_params_list[0].extra_args.update(extra)
+@@ -2461,7 +2466,7 @@ class OmniOpenAIServingSpeech(OpenAIServing, AudioMixin):
+                     except (TypeError, ValueError) as exc:
+                         raise ValueError("guidance_scale must be a number") from exc
+ 
+-                logger.info("Applied extra_params to diffusion: %s", extra)
++                logger.info("Applied diffusion speech params: seed=%s extra_params=%s", seed, extra)
+ 
+             generator = self._diffusion_engine.generate(
+                 prompt=prompt,
+@@ -2504,7 +2509,13 @@ class OmniOpenAIServingSpeech(OpenAIServing, AudioMixin):
+                 base64_encode=False,
+             )
+             audio_response: AudioResponse = self.create_audio(audio_obj)
+-            return Response(content=audio_response.audio_data, media_type=audio_response.media_type)
++            peak_memory_mb = float(final_output.peak_memory_mb or 0.0)
++            headers = {"X-Peak-Memory-MB": f"{peak_memory_mb:.3f}"} if peak_memory_mb > 0 else None
++            return Response(
++                content=audio_response.audio_data,
++                media_type=audio_response.media_type,
++                headers=headers,
++            )
+ 
+         except asyncio.CancelledError:
+             return self._diffusion_error_response("Client disconnected")
+diff --git a/vllm_omni/model_executor/models/omnivoice/omnivoice.py b/vllm_omni/model_executor/models/omnivoice/omnivoice.py
+index bca547eb8..eb4c1fdc6 100644
+--- a/vllm_omni/model_executor/models/omnivoice/omnivoice.py
++++ b/vllm_omni/model_executor/models/omnivoice/omnivoice.py
+@@ -452,6 +452,7 @@ class OmniVoiceModel(
+             audio_mask=batch_audio_mask,
+             attention_mask=batch_attention_mask,
+             target_lens=[target_len],
++            conditional_lens=[cond_len],
+             num_step=self.config.num_step,
+             guidance_scale=self.config.guidance_scale,
+             t_shift=self.config.t_shift,
+diff --git a/vllm_omni/model_executor/models/omnivoice/omnivoice_generator.py b/vllm_omni/model_executor/models/omnivoice/omnivoice_generator.py
+index 965d021b8..311adfcf8 100644
+--- a/vllm_omni/model_executor/models/omnivoice/omnivoice_generator.py
++++ b/vllm_omni/model_executor/models/omnivoice/omnivoice_generator.py
+@@ -968,6 +968,7 @@ class OmniVoiceGenerator(nn.Module):
+         layer_penalty_factor: float = 5.0,
+         position_temperature: float = 5.0,
+         class_temperature: float = 0.0,
++        generators: list[torch.Generator] | None = None,
+     ) -> torch.Tensor:
+         """Run the full 32-step iterative unmasking generation.
+ 
+@@ -987,6 +988,8 @@ class OmniVoiceGenerator(nn.Module):
+             position_temperature: Gumbel temperature for position selection.
+             class_temperature: Token sampling temperature; zero selects greedy
+                 decoding.
++            generators: Optional persistent generator per request, overriding
++                seed to preserve random state across chunks.
+ 
+         Returns:
+             Packed generated audio tokens with shape
+@@ -997,13 +1000,16 @@ class OmniVoiceGenerator(nn.Module):
+         total_target_lens = sum(target_lens)
+         mask_id = self.config.audio_mask_id
+         num_codebooks = self.config.num_audio_codebook
+-        seeds = seed if isinstance(seed, list) else [seed] * B
+-        generators = [
+-            torch.Generator(device=device).manual_seed(
+-                request_seed if request_seed is not None else random.randint(0, 2**63 - 1)
+-            )
+-            for request_seed in seeds
+-        ]
++        if generators is None:
++            seeds = seed if isinstance(seed, list) else [seed] * B
++            generators = [
++                torch.Generator(device=device).manual_seed(
++                    request_seed if request_seed is not None else random.randint(0, 2**63 - 1)
++                )
++                for request_seed in seeds
++            ]
++        elif len(generators) != B:
++            raise ValueError("generators must contain one generator per request")
+ 
+         # Initialize all target tokens as [MASK]
+         tokens = torch.full((1, num_codebooks, total_target_lens), mask_id, dtype=torch.long, device=device)
+diff --git a/vllm_omni/transformers_utils/configs/omnivoice.py b/vllm_omni/transformers_utils/configs/omnivoice.py
+index ac203bf04..e92a1d68a 100644
+--- a/vllm_omni/transformers_utils/configs/omnivoice.py
++++ b/vllm_omni/transformers_utils/configs/omnivoice.py
+@@ -75,6 +75,8 @@ class OmniVoiceConfig(PretrainedConfig):
+         self.layer_penalty_factor = getattr(self, "layer_penalty_factor", 5.0)
+         self.position_temperature = getattr(self, "position_temperature", 5.0)
+         self.class_temperature = getattr(self, "class_temperature", 0.0)
++        self.audio_chunk_duration = getattr(self, "audio_chunk_duration", 15.0)
++        self.audio_chunk_threshold = getattr(self, "audio_chunk_threshold", 30.0)
+ 
+         # Audio output
+         self.sample_rate = getattr(self, "sample_rate", 24000)

@@ -1,0 +1,34 @@
+[
+  {
+    "variant": "decimal_only",
+    "prompt": "english_comma_sentences",
+    "better": 0,
+    "same": 10,
+    "worse": 0,
+    "mean_coverage_change": 0.0
+  },
+  {
+    "variant": "decimal_only",
+    "prompt": "english_decimal_boundary",
+    "better": 6,
+    "same": 2,
+    "worse": 2,
+    "mean_coverage_change": 0.006060606060606055
+  },
+  {
+    "variant": "full",
+    "prompt": "english_comma_sentences",
+    "better": 1,
+    "same": 9,
+    "worse": 0,
+    "mean_coverage_change": 0.002020202020202022
+  },
+  {
+    "variant": "full",
+    "prompt": "english_decimal_boundary",
+    "better": 7,
+    "same": 0,
+    "worse": 3,
+    "mean_coverage_change": -0.0007575757575757569
+  }
+]
