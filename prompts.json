@@ -1,0 +1,36 @@
+{
+  "source": {
+    "kind": "diagnostic",
+    "description": "Synthetic English software evaluation passage targeting a decimal boundary at default chunk settings; no reference audio.",
+    "seeds": [
+      42,
+      123,
+      7
+    ]
+  },
+  "prompts": [
+    {
+      "prompt_id": "english_decimal_boundary",
+      "bucket": "diagnostic",
+      "source_id": "synthetic_decimal_boundary",
+      "category": "decimal_boundary",
+      "word_count": 132,
+      "text": "Before choosing the software version for our next production deployment we need to examine the results from every department and check whether the reported improvements remain consistent when the same documents are processed on the same machines under the same operating conditions so today we will compare releases 0.26, 0.28 and 0.30 in a controlled evaluation. The first release establishes the baseline for response time and memory use. The second release changes the scheduling policy while keeping the input documents and hardware unchanged. The third release introduces a new caching method that may help repeated requests but could have less effect on documents seen for the first time. We will record every result and check the original logs before deciding which version should be used for the next deployment.",
+      "text_sha256": "78007b27a46db84365745d87080434727775f02497dbf5e897ec61481fa354d1",
+      "language": "English",
+      "reference_mode": "none",
+      "modes": [
+        "default"
+      ]
+    },
+    {
+      "prompt_id": "english_comma_sentences",
+      "text": "In the morning, the baker opens the shop, checks the oven, and prepares fresh bread for the village. At the station, passengers collect their tickets, read the timetable, and wait quietly beside the platform. Across the square, the gardener waters the flowers, clears the paths, and checks the young trees. After lunch, the teacher gathers the notebooks, reads each answer, and explains the next lesson. Before sunset, the visitors return to the hotel, put away their bags, and discuss their plans for tomorrow. In the evening, the librarian closes the windows, arranges the chairs, and turns off the lights.",
+      "language": "English",
+      "modes": [
+        "default"
+      ],
+      "reference_mode": "none"
+    }
+  ]
+}
