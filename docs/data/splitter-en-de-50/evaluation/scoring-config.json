@@ -1,0 +1,15 @@
+{
+  "condition_on_prev_tokens": false,
+  "do_sample": false,
+  "dtype": "float32",
+  "evaluator_sha256": "a0f064fa82b4f54819f7944b6aa23c5d6a172c42560648f9487b50cc1d38d378",
+  "language": "explicit per prompt",
+  "mode": "whole-output sequential long-form",
+  "model": "openai/whisper-large-v3-turbo",
+  "num_beams": 1,
+  "records_sha256": "e4a6a0d5392dc7f3b03c35b7afe3e26c04dacbdee8075058de30f1ba16556e9a",
+  "reference_text_prompt": false,
+  "return_timestamps": true,
+  "revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
+  "temperature": 0.0
+}

@@ -1,0 +1,92 @@
+{
+  "audit_validation": "PASS",
+  "recomputed_audit": {
+    "all": {
+      "n": 23,
+      "theirs_lower": 11,
+      "ours_lower": 6,
+      "ties": 6,
+      "sign_p": 0.332305908203125
+    },
+    "German": {
+      "n": 16,
+      "theirs_lower": 9,
+      "ours_lower": 2,
+      "ties": 5,
+      "sign_p": 0.0654296875
+    },
+    "English": {
+      "n": 7,
+      "theirs_lower": 2,
+      "ours_lower": 4,
+      "ties": 1,
+      "sign_p": 0.6875
+    },
+    "same_split_equal_wer": 27,
+    "duration_different": 17,
+    "duration_delta_sum": 2.842170943040401e-14,
+    "first_chunk_changed": [
+      "wiki_en_targeted_08",
+      "wiki_de_random_14",
+      "wiki_de_targeted_05",
+      "wiki_de_targeted_08"
+    ],
+    "exclusive_boundaries": {
+      "ours": 42,
+      "theirs": 44
+    },
+    "latency_same": {
+      "n": 26,
+      "median": 0.0011361060000041334,
+      "sample_sd": 0.14076639943925617,
+      "min": -0.5529693960000372,
+      "max": 0.08774573399989549,
+      "chunk_count_r": null
+    },
+    "latency_different": {
+      "n": 22,
+      "median": 0.23270561250001265,
+      "sample_sd": 0.6005686590782572,
+      "min": -1.114234472000021,
+      "max": 1.2275177280000094,
+      "chunk_count_r": 0.7592852169688632
+    },
+    "join_length_check": {
+      "max_abs_frame_error": 4.004166666666663,
+      "median_file_max": 1.0239583333333258,
+      "files_within4": 98,
+      "exact_total_predicted_files": 4,
+      "method": "Zero-run extents excluded; frames at 25Hz"
+    },
+    "runner_hash_matches_prerun_config": true
+  },
+  "different_prompt_ids": [
+    "wiki_en_random_05",
+    "wiki_en_targeted_02",
+    "wiki_en_targeted_03",
+    "wiki_en_targeted_06",
+    "wiki_en_targeted_07",
+    "wiki_en_targeted_08",
+    "wiki_en_targeted_09",
+    "wiki_de_random_01",
+    "wiki_de_random_02",
+    "wiki_de_random_06",
+    "wiki_de_random_09",
+    "wiki_de_random_10",
+    "wiki_de_random_13",
+    "wiki_de_random_14",
+    "wiki_de_targeted_01",
+    "wiki_de_targeted_02",
+    "wiki_de_targeted_03",
+    "wiki_de_targeted_04",
+    "wiki_de_targeted_05",
+    "wiki_de_targeted_06",
+    "wiki_de_targeted_07",
+    "wiki_de_targeted_08",
+    "wiki_de_targeted_10"
+  ],
+  "same_split_prompt_count": 27,
+  "internal_candidate_count_matches_expected_files": 100,
+  "listening_judgments": "pending",
+  "boundary_annotations": "pending"
+}

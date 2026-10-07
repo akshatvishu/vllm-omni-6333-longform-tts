@@ -1,0 +1,5 @@
+# CPU-only validation and Pages build, matching the recorded data/audio libraries.
+numpy==2.3.5
+soundfile==0.14.0
+pyarrow==25.0.1
+huggingface_hub==1.33.0

@@ -1,0 +1,8 @@
+# Known package pins from the recorded splitter experiment.
+# This supplements a working ROCm vLLM environment; it is not a full lock file.
+# Retain the base image's torch, torchaudio, torchvision, triton and vllm wheels.
+transformers==5.14.1
+omnivoice==0.2.1
+jiwer==4.0.0
+pydub==0.25.1
+datasets==5.0.1

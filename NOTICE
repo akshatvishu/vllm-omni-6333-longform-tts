@@ -1,1 +1,5 @@
-Source patches, splitter variants and benchmark harness are derived from vLLM-Omni and retain their original copyright notices. OmniVoice splitter source also credits Xiaomi Corp. Model weights are not included. Audio is generated from the synthetic prompts in prompts.json, without reference voices.
+Source patches, splitter variants and benchmark harness are derived from vLLM-Omni and retain their original copyright notices. OmniVoice splitter source also credits Xiaomi Corp. Code is covered by the repository LICENSE.
+
+The original experiment uses synthetic prompts in prompts.json. The latest splitter-en-de-50 experiment uses English and German passages from wikimedia/wikipedia at revision b04c8d1ceb2f5cd4588862100d08de323dccfbaa. Those passages and saved source articles retain Wikipedia's CC BY-SA 3.0 and GFDL terms, as identified by the dataset card. They are not relicensed under the code license. Article titles, URLs, revision metadata, and extraction offsets are preserved in data/splitter-en-de-50/provenance.json and source-articles.jsonl. Retain this attribution when redistributing source passages or generated readings.
+
+Audio was generated without reference voices. No model weights are included.

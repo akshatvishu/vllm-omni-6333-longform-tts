@@ -1,0 +1,802 @@
+[
+  {
+    "audio_duration_s_theirs_minus_ours": -0.12000000000000455,
+    "cold_start_affected": {
+      "ours": true,
+      "theirs": true
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.40872925500002566,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0625,
+    "prompt_id": "wiki_de_random_01",
+    "rtf_theirs_minus_ours": 0.0031086728309625555,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": -0.09999999999999432,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.007518796992481147,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.7604944279999017,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_02",
+    "rtf_theirs_minus_ours": 0.006488421533101162,
+    "wer_theirs_minus_ours": -0.015037593984962405
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.038922517999935735,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_03",
+    "rtf_theirs_minus_ours": 0.00037541008873394344,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.05912000699993314,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_04",
+    "rtf_theirs_minus_ours": 0.00045150455933964245,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.08774573399989549,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_05",
+    "rtf_theirs_minus_ours": 0.0006028148804609473,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": -0.03999999999999204,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.2555958149999924,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_06",
+    "rtf_theirs_minus_ours": 0.0018830269165204944,
+    "wer_theirs_minus_ours": -0.0033670033670033517
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -0.020571477999965282,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_07",
+    "rtf_theirs_minus_ours": -0.00016595254920914043,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.041587423999885686,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_08",
+    "rtf_theirs_minus_ours": 0.0002866911898516816,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": -0.09999999999999432,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.011627906976744207,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -1.114234472000021,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_09",
+    "rtf_theirs_minus_ours": -0.009083894524542897,
+    "wer_theirs_minus_ours": -0.011627906976744186
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.040909090909090895,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.019988276999924892,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_10",
+    "rtf_theirs_minus_ours": 0.00022408382286911305,
+    "wer_theirs_minus_ours": -0.04090909090909091
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -0.21759164200011583,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_11",
+    "rtf_theirs_minus_ours": -0.0019110455120333394,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.040060248000031606,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_12",
+    "rtf_theirs_minus_ours": 0.0003332799334445219,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -0.6663155559999723,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_13",
+    "rtf_theirs_minus_ours": -0.0064892438254769425,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": -0.12000000000000455,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.007575757575757569,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.47350785200001155,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_14",
+    "rtf_theirs_minus_ours": 0.004084878583113696,
+    "wer_theirs_minus_ours": -0.0037878787878787915
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.013388590999852568,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_random_15",
+    "rtf_theirs_minus_ours": 0.00013874187564614365,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.4200000000000159,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.01967213114754096,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.7422685129998854,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_01",
+    "rtf_theirs_minus_ours": 0.005120196865142326,
+    "wer_theirs_minus_ours": -0.019672131147540975
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.060000000000002274,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": -0.0275590551181103,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.3426032969999824,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_02",
+    "rtf_theirs_minus_ours": 0.002518264241121282,
+    "wer_theirs_minus_ours": 0.027559055118110243
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.006968641114982632,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.27551069599996936,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_03",
+    "rtf_theirs_minus_ours": 0.002244303486477431,
+    "wer_theirs_minus_ours": -0.0069686411149825905
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.03999999999999204,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.6058987249998609,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_04",
+    "rtf_theirs_minus_ours": 0.004204766280668265,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.2400000000000091,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": -0.02145922746781115,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.49574914799984526,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_05",
+    "rtf_theirs_minus_ours": 0.0044871726159805,
+    "wer_theirs_minus_ours": 0.021459227467811155
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -0.3838873309999826,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.009765625,
+    "prompt_id": "wiki_de_targeted_06",
+    "rtf_theirs_minus_ours": -0.0026981116882202894,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.060000000000002274,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0038461538461538325,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.48662873899991155,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_07",
+    "rtf_theirs_minus_ours": 0.004009206476122636,
+    "wer_theirs_minus_ours": -0.011538461538461539
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": -1.3199999999999932,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.021186440677966045,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -0.4986450830000422,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.009765625,
+    "prompt_id": "wiki_de_targeted_08",
+    "rtf_theirs_minus_ours": -0.003664312408783593,
+    "wer_theirs_minus_ours": -0.0211864406779661
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": -0.18663526100010586,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.009765625,
+    "prompt_id": "wiki_de_targeted_09",
+    "rtf_theirs_minus_ours": -0.0017956057436993023,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.03999999999999204,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "German",
+    "latency_s_theirs_minus_ours": 0.005687758000021859,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": -0.0078125,
+    "prompt_id": "wiki_de_targeted_10",
+    "rtf_theirs_minus_ours": 2.7526128295492225e-05,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": true,
+      "theirs": true
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.12173875099995257,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_01",
+    "rtf_theirs_minus_ours": -0.0012898786925191058,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.013276667999974734,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_02",
+    "rtf_theirs_minus_ours": 0.00014864160322407977,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.03768902999999568,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_03",
+    "rtf_theirs_minus_ours": 0.0003575130904951221,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.06097499700004505,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_04",
+    "rtf_theirs_minus_ours": 0.0006684389059421758,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.5999999999999943,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": -0.006644518272425293,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.20725632699998187,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_05",
+    "rtf_theirs_minus_ours": 0.0015558784428716665,
+    "wer_theirs_minus_ours": 0.0033222591362126325
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.08036504199998262,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_06",
+    "rtf_theirs_minus_ours": 0.0008811956359647197,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.029349140999983092,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_07",
+    "rtf_theirs_minus_ours": -0.00025574364761226515,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.006620173000015939,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_08",
+    "rtf_theirs_minus_ours": 7.801288003789209e-05,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.5529693960000372,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_09",
+    "rtf_theirs_minus_ours": -0.004129102419355123,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.13979015999996136,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_10",
+    "rtf_theirs_minus_ours": -0.0011068104513061033,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.0018325650000576843,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_11",
+    "rtf_theirs_minus_ours": -1.514516528972748e-05,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.023762567000005674,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_12",
+    "rtf_theirs_minus_ours": 0.00019064960686782095,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.03718489399997793,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_13",
+    "rtf_theirs_minus_ours": -0.00031733140467637977,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.027129136000013432,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_14",
+    "rtf_theirs_minus_ours": -0.0002455569876902014,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "random",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.0030789920000131588,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_random_15",
+    "rtf_theirs_minus_ours": 3.0740734824410976e-05,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.01734419600001047,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_01",
+    "rtf_theirs_minus_ours": -0.00013862049232744866,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": -0.060000000000002274,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": -0.00917431192660545,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -1.0425942460000215,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_02",
+    "rtf_theirs_minus_ours": -0.008205983110452543,
+    "wer_theirs_minus_ours": 0.012232415902140692
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.04000000000000625,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.2782855669999549,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_03",
+    "rtf_theirs_minus_ours": -0.00232945777740292,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.0008067800000048919,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_04",
+    "rtf_theirs_minus_ours": -8.096949016503374e-06,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.0899954589999652,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_05",
+    "rtf_theirs_minus_ours": -0.0008173974477744331,
+    "wer_theirs_minus_ours": 0.0
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0034129692832763903,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.2098154100000329,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_06",
+    "rtf_theirs_minus_ours": 0.0017871840715505405,
+    "wer_theirs_minus_ours": -0.010238907849829365
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.006688963210702337,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.2745737200000349,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_07",
+    "rtf_theirs_minus_ours": -0.002322958714044282,
+    "wer_theirs_minus_ours": -0.006688963210702342
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.3400000000000034,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": -0.03928571428571437,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 1.2275177280000094,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_08",
+    "rtf_theirs_minus_ours": 0.011156438157410721,
+    "wer_theirs_minus_ours": 0.039285714285714285
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.01999999999999602,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": -0.010600706713780994,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": 0.7021540320000099,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_09",
+    "rtf_theirs_minus_ours": 0.006619630890992802,
+    "wer_theirs_minus_ours": 0.010600706713780925
+  },
+  {
+    "audio_duration_s_theirs_minus_ours": 0.0,
+    "cold_start_affected": {
+      "ours": false,
+      "theirs": false
+    },
+    "coverage_theirs_minus_ours": 0.0,
+    "group": "targeted",
+    "language": "English",
+    "latency_s_theirs_minus_ours": -0.3100124890000302,
+    "listening_preference": "pending",
+    "peak_reserved_gib_theirs_minus_ours": 0.0,
+    "prompt_id": "wiki_en_targeted_10",
+    "rtf_theirs_minus_ours": -0.00256590373282594,
+    "wer_theirs_minus_ours": 0.0
+  }
+]

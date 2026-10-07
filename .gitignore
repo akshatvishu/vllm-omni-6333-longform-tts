@@ -1,4 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
-results/
+results/*
+!results/splitter-en-de-50/
+results/splitter-en-de-50/**/*.wav
+results/splitter-en-de-50/audio-review/audio/

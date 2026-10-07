@@ -1,0 +1,55 @@
+{
+  "blocks": [
+    [
+      "ours",
+      0,
+      25
+    ],
+    [
+      "theirs",
+      0,
+      25
+    ],
+    [
+      "theirs",
+      25,
+      50
+    ],
+    [
+      "ours",
+      25,
+      50
+    ]
+  ],
+  "client_sha256": "2c31ecd36a8ec97ee73fc86ce9f9bf28a039a70fe7faf19eba5e36dc4f6601b3",
+  "command": [
+    "/usr/local/bin/vllm",
+    "serve",
+    "k2-fsa/OmniVoice",
+    "--revision",
+    "c5fdb5ccb189668d56333f77ba2629f4cd7535f4",
+    "--omni",
+    "--deploy-config",
+    "vllm_omni/deploy/omnivoice.yaml",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8091",
+    "--log-stats",
+    "--trust-remote-code"
+  ],
+  "deploy_config_sha256": "3ce36bd562d575ded0e2abaa3497e61c1c22e6d76928f9b46d90c86481be7674",
+  "diagnostics": false,
+  "gpu_index": "0",
+  "manifest_sha256": "0024b112ef13d33196e89f7b0576ed399000d4a02d11c81814e65a7c51446d48",
+  "python": "/usr/bin/python3",
+  "repo_root": "/workspace/vllm-omni",
+  "runner_sha256": "e52d385500a90706ffa91f63fca67ea69e3c06e91411e492787df4f4c41fec5c",
+  "seed": 42,
+  "sources": {
+    "ours": "84e07ebf944de2a71e133e0643ade789eb1fafb1c9660c5a00c21fa7fa64aab4",
+    "theirs": "6c8b6f578bfbda6f590a4070cde72092634a8080927ba9fdf7470acb22fa35aa"
+  },
+  "timeout": 1200,
+  "warmup_generations": 0
+}

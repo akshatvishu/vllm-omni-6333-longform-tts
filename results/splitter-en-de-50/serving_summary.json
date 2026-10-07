@@ -1,0 +1,68 @@
+{
+  "attempts_reserved": 100,
+  "memory": "X-Peak-Memory-MB / 1024; server-reported peak reserved GiB.",
+  "planned_attempts": 100,
+  "speed_policy": "Exclude the first attempted request after every server start.",
+  "timing": "Client POST through complete response body; excludes WAV decoding and saving.",
+  "variants": {
+    "ours": {
+      "attempts": 50,
+      "cold_start_excluded": 2,
+      "latency_s": {
+        "mean": 6.264286674083344,
+        "p50": 6.0345999209999945,
+        "p90": 8.063625359399998,
+        "p99": 8.869227061860059,
+        "stddev": 1.168558412101405
+      },
+      "peak_reserved_gib": {
+        "mean": 4.983357747395833,
+        "p50": 4.984375,
+        "p90": 5.03515625,
+        "p99": 5.214238281250001,
+        "stddev": 0.06831838814870922
+      },
+      "rtf": {
+        "mean": 0.05349010575728663,
+        "p50": 0.05399852776170802,
+        "p90": 0.06314184472995564,
+        "p99": 0.06652899122688488,
+        "stddev": 0.0065830846662912135
+      },
+      "speed_samples": 48,
+      "statuses": {
+        "success": 50
+      }
+    },
+    "theirs": {
+      "attempts": 50,
+      "cold_start_excluded": 2,
+      "latency_s": {
+        "mean": 6.294026677499983,
+        "p50": 5.970492644999922,
+        "p90": 7.912521168999945,
+        "p99": 9.231593881089935,
+        "stddev": 1.1454734307164887
+      },
+      "peak_reserved_gib": {
+        "mean": 4.979329427083333,
+        "p50": 4.9765625,
+        "p90": 5.03515625,
+        "p99": 5.214238281250001,
+        "stddev": 0.0683621453339356
+      },
+      "rtf": {
+        "mean": 0.05375444615198104,
+        "p50": 0.05372348701741176,
+        "p90": 0.06236820839404497,
+        "p99": 0.06702285561899471,
+        "stddev": 0.006220475557412819
+      },
+      "speed_samples": 48,
+      "statuses": {
+        "success": 50
+      }
+    }
+  },
+  "warmup_generations": 0
+}

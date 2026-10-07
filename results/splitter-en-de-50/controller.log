@@ -1,0 +1,238 @@
+PASS: 50 unique prompts; language/group counts, exact source spans, features, schema and frozen hashes.
+/workspace/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev3449+g2ece39874.d20261007.rocm
+ --> vLLM version 0.31.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+[aiter] import [module_aiter_core] under /usr/local/lib/python3.12/dist-packages/aiter/jit/module_aiter_core.so
+Module humming was found but failed to import
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/vllm/utils/import_utils.py", line 414, in _has_module
+    if importlib.util.find_spec(module_name) is None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib.util>", line 111, in find_spec
+ValueError: humming.__spec__ is None
+Verified runtime chunk settings: {'frame_rate': 25, 'audio_chunk_duration': 15.0, 'audio_chunk_threshold': 30.0}
+{
+  "prompt_count": 50,
+  "chunking_triggered_count": 50,
+  "different_chunk_text_count": 23,
+  "different_chunk_count_count": 9,
+  "total_chunks": {
+    "ours": 566,
+    "theirs": 568
+  },
+  "all_content_and_character_bounds_valid": true,
+  "sentence_annotation": "pending"
+}
+1/100 ours wiki_en_random_01_default_seed42: success
+2/100 ours wiki_en_random_02_default_seed42: success
+3/100 ours wiki_en_random_03_default_seed42: success
+4/100 ours wiki_en_random_04_default_seed42: success
+5/100 ours wiki_en_random_05_default_seed42: success
+6/100 ours wiki_en_random_06_default_seed42: success
+7/100 ours wiki_en_random_07_default_seed42: success
+8/100 ours wiki_en_random_08_default_seed42: success
+9/100 ours wiki_en_random_09_default_seed42: success
+10/100 ours wiki_en_random_10_default_seed42: success
+11/100 ours wiki_en_random_11_default_seed42: success
+12/100 ours wiki_en_random_12_default_seed42: success
+13/100 ours wiki_en_random_13_default_seed42: success
+14/100 ours wiki_en_random_14_default_seed42: success
+15/100 ours wiki_en_random_15_default_seed42: success
+16/100 ours wiki_en_targeted_01_default_seed42: success
+17/100 ours wiki_en_targeted_02_default_seed42: success
+18/100 ours wiki_en_targeted_03_default_seed42: success
+19/100 ours wiki_en_targeted_04_default_seed42: success
+20/100 ours wiki_en_targeted_05_default_seed42: success
+21/100 ours wiki_en_targeted_06_default_seed42: success
+22/100 ours wiki_en_targeted_07_default_seed42: success
+23/100 ours wiki_en_targeted_08_default_seed42: success
+24/100 ours wiki_en_targeted_09_default_seed42: success
+25/100 ours wiki_en_targeted_10_default_seed42: success
+26/100 theirs wiki_en_random_01_default_seed42: success
+27/100 theirs wiki_en_random_02_default_seed42: success
+28/100 theirs wiki_en_random_03_default_seed42: success
+29/100 theirs wiki_en_random_04_default_seed42: success
+30/100 theirs wiki_en_random_05_default_seed42: success
+31/100 theirs wiki_en_random_06_default_seed42: success
+32/100 theirs wiki_en_random_07_default_seed42: success
+33/100 theirs wiki_en_random_08_default_seed42: success
+34/100 theirs wiki_en_random_09_default_seed42: success
+35/100 theirs wiki_en_random_10_default_seed42: success
+36/100 theirs wiki_en_random_11_default_seed42: success
+37/100 theirs wiki_en_random_12_default_seed42: success
+38/100 theirs wiki_en_random_13_default_seed42: success
+39/100 theirs wiki_en_random_14_default_seed42: success
+40/100 theirs wiki_en_random_15_default_seed42: success
+41/100 theirs wiki_en_targeted_01_default_seed42: success
+42/100 theirs wiki_en_targeted_02_default_seed42: success
+43/100 theirs wiki_en_targeted_03_default_seed42: success
+44/100 theirs wiki_en_targeted_04_default_seed42: success
+45/100 theirs wiki_en_targeted_05_default_seed42: success
+46/100 theirs wiki_en_targeted_06_default_seed42: success
+47/100 theirs wiki_en_targeted_07_default_seed42: success
+48/100 theirs wiki_en_targeted_08_default_seed42: success
+49/100 theirs wiki_en_targeted_09_default_seed42: success
+50/100 theirs wiki_en_targeted_10_default_seed42: success
+51/100 theirs wiki_de_random_01_default_seed42: success
+52/100 theirs wiki_de_random_02_default_seed42: success
+53/100 theirs wiki_de_random_03_default_seed42: success
+54/100 theirs wiki_de_random_04_default_seed42: success
+55/100 theirs wiki_de_random_05_default_seed42: success
+56/100 theirs wiki_de_random_06_default_seed42: success
+57/100 theirs wiki_de_random_07_default_seed42: success
+58/100 theirs wiki_de_random_08_default_seed42: success
+59/100 theirs wiki_de_random_09_default_seed42: success
+60/100 theirs wiki_de_random_10_default_seed42: success
+61/100 theirs wiki_de_random_11_default_seed42: success
+62/100 theirs wiki_de_random_12_default_seed42: success
+63/100 theirs wiki_de_random_13_default_seed42: success
+64/100 theirs wiki_de_random_14_default_seed42: success
+65/100 theirs wiki_de_random_15_default_seed42: success
+66/100 theirs wiki_de_targeted_01_default_seed42: success
+67/100 theirs wiki_de_targeted_02_default_seed42: success
+68/100 theirs wiki_de_targeted_03_default_seed42: success
+69/100 theirs wiki_de_targeted_04_default_seed42: success
+70/100 theirs wiki_de_targeted_05_default_seed42: success
+71/100 theirs wiki_de_targeted_06_default_seed42: success
+72/100 theirs wiki_de_targeted_07_default_seed42: success
+73/100 theirs wiki_de_targeted_08_default_seed42: success
+74/100 theirs wiki_de_targeted_09_default_seed42: success
+75/100 theirs wiki_de_targeted_10_default_seed42: success
+76/100 ours wiki_de_random_01_default_seed42: success
+77/100 ours wiki_de_random_02_default_seed42: success
+78/100 ours wiki_de_random_03_default_seed42: success
+79/100 ours wiki_de_random_04_default_seed42: success
+80/100 ours wiki_de_random_05_default_seed42: success
+81/100 ours wiki_de_random_06_default_seed42: success
+82/100 ours wiki_de_random_07_default_seed42: success
+83/100 ours wiki_de_random_08_default_seed42: success
+84/100 ours wiki_de_random_09_default_seed42: success
+85/100 ours wiki_de_random_10_default_seed42: success
+86/100 ours wiki_de_random_11_default_seed42: success
+87/100 ours wiki_de_random_12_default_seed42: success
+88/100 ours wiki_de_random_13_default_seed42: success
+89/100 ours wiki_de_random_14_default_seed42: success
+90/100 ours wiki_de_random_15_default_seed42: success
+91/100 ours wiki_de_targeted_01_default_seed42: success
+92/100 ours wiki_de_targeted_02_default_seed42: success
+93/100 ours wiki_de_targeted_03_default_seed42: success
+94/100 ours wiki_de_targeted_04_default_seed42: success
+95/100 ours wiki_de_targeted_05_default_seed42: success
+96/100 ours wiki_de_targeted_06_default_seed42: success
+97/100 ours wiki_de_targeted_07_default_seed42: success
+98/100 ours wiki_de_targeted_08_default_seed42: success
+99/100 ours wiki_de_targeted_09_default_seed42: success
+100/100 ours wiki_de_targeted_10_default_seed42: success
+Finished: 100/100 attempts reserved; inspect serving_summary.json for failures/interruption.
+Loading openai/whisper-large-v3-turbo for Whisper transcription. Pending audio files: 100.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/587 [00:00<?, ?it/s]Loading weights:  29%|██▉       | 169/587 [00:00<00:00, 1649.88it/s]Loading weights:  58%|█████▊    | 341/587 [00:00<00:00, 1686.86it/s]Loading weights:  87%|████████▋ | 511/587 [00:00<00:00, 1683.99it/s]Loading weights: 100%|██████████| 587/587 [00:00<00:00, 1681.94it/s]
+Whisper loaded. Starting transcription.
+MIOpen(HIP): Warning [IsEnoughWorkspace] [GetSolutionsFallback WTI] Solver <ConvAsmImplicitGemmGTCDynamicFwdXdlopsNHWC>, workspace required: 42700800, provided ptr: 0x7d543d400000 size: 23040000
+MIOpen(HIP): Warning [IsEnoughWorkspace] [GetSolutionsFallback WTI] Solver <ConvHipImplicitGemmGroupFwdXdlops>, workspace required: 42700800, provided ptr: 0x7d543d400000 size: 23040000
+[transformers] A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+[transformers] A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer WhisperTokenizer. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[1/100] ours wiki_en_random_01_default_seed42: coverage 96.51%, WER 0.0437
+[2/100] theirs wiki_en_random_01_default_seed42: coverage 96.51%, WER 0.0437
+[3/100] ours wiki_en_random_02_default_seed42: coverage 94.38%, WER 0.1205
+[4/100] theirs wiki_en_random_02_default_seed42: coverage 94.38%, WER 0.1205
+[5/100] ours wiki_en_random_03_default_seed42: coverage 95.74%, WER 0.0638
+[6/100] theirs wiki_en_random_03_default_seed42: coverage 95.74%, WER 0.0638
+[7/100] ours wiki_en_random_04_default_seed42: coverage 96.25%, WER 0.0417
+[8/100] theirs wiki_en_random_04_default_seed42: coverage 96.25%, WER 0.0417
+[9/100] ours wiki_en_random_05_default_seed42: coverage 94.02%, WER 0.0631
+[10/100] theirs wiki_en_random_05_default_seed42: coverage 93.36%, WER 0.0664
+[11/100] ours wiki_en_random_06_default_seed42: coverage 95.78%, WER 0.0549
+[12/100] theirs wiki_en_random_06_default_seed42: coverage 95.78%, WER 0.0549
+[13/100] ours wiki_en_random_07_default_seed42: coverage 97.64%, WER 0.0270
+[14/100] theirs wiki_en_random_07_default_seed42: coverage 97.64%, WER 0.0270
+[15/100] ours wiki_en_random_08_default_seed42: coverage 97.74%, WER 0.0226
+[16/100] theirs wiki_en_random_08_default_seed42: coverage 97.74%, WER 0.0226
+[17/100] ours wiki_en_random_09_default_seed42: coverage 97.07%, WER 0.0326
+[18/100] theirs wiki_en_random_09_default_seed42: coverage 97.07%, WER 0.0326
+[19/100] ours wiki_en_random_10_default_seed42: coverage 97.38%, WER 0.0328
+[20/100] theirs wiki_en_random_10_default_seed42: coverage 97.38%, WER 0.0328
+[21/100] ours wiki_en_random_11_default_seed42: coverage 96.88%, WER 0.0312
+[22/100] theirs wiki_en_random_11_default_seed42: coverage 96.88%, WER 0.0312
+[23/100] ours wiki_en_random_12_default_seed42: coverage 98.33%, WER 0.0167
+[24/100] theirs wiki_en_random_12_default_seed42: coverage 98.33%, WER 0.0167
+[25/100] ours wiki_en_random_13_default_seed42: coverage 93.33%, WER 0.0730
+[26/100] theirs wiki_en_random_13_default_seed42: coverage 93.33%, WER 0.0730
+[27/100] ours wiki_en_random_14_default_seed42: coverage 92.45%, WER 0.0755
+[28/100] theirs wiki_en_random_14_default_seed42: coverage 92.45%, WER 0.0755
+[29/100] ours wiki_en_random_15_default_seed42: coverage 98.80%, WER 0.0120
+[30/100] theirs wiki_en_random_15_default_seed42: coverage 98.80%, WER 0.0120
+[31/100] ours wiki_en_targeted_01_default_seed42: coverage 99.04%, WER 0.0096
+[32/100] theirs wiki_en_targeted_01_default_seed42: coverage 99.04%, WER 0.0096
+[33/100] ours wiki_en_targeted_02_default_seed42: coverage 83.18%, WER 0.1713
+[34/100] theirs wiki_en_targeted_02_default_seed42: coverage 82.26%, WER 0.1835
+[35/100] ours wiki_en_targeted_03_default_seed42: coverage 99.65%, WER 0.0035
+[36/100] theirs wiki_en_targeted_03_default_seed42: coverage 99.65%, WER 0.0035
+[37/100] ours wiki_en_targeted_04_default_seed42: coverage 89.33%, WER 0.1462
+[38/100] theirs wiki_en_targeted_04_default_seed42: coverage 89.33%, WER 0.1462
+[39/100] ours wiki_en_targeted_05_default_seed42: coverage 98.40%, WER 0.0160
+[40/100] theirs wiki_en_targeted_05_default_seed42: coverage 98.40%, WER 0.0160
+[41/100] ours wiki_en_targeted_06_default_seed42: coverage 91.81%, WER 0.1399
+[42/100] theirs wiki_en_targeted_06_default_seed42: coverage 92.15%, WER 0.1297
+[43/100] ours wiki_en_targeted_07_default_seed42: coverage 99.00%, WER 0.0100
+[44/100] theirs wiki_en_targeted_07_default_seed42: coverage 99.67%, WER 0.0033
+[45/100] ours wiki_en_targeted_08_default_seed42: coverage 98.93%, WER 0.0107
+[46/100] theirs wiki_en_targeted_08_default_seed42: coverage 95.00%, WER 0.0500
+[47/100] ours wiki_en_targeted_09_default_seed42: coverage 95.76%, WER 0.0636
+[48/100] theirs wiki_en_targeted_09_default_seed42: coverage 94.70%, WER 0.0742
+[49/100] ours wiki_en_targeted_10_default_seed42: coverage 98.96%, WER 0.0104
+[50/100] theirs wiki_en_targeted_10_default_seed42: coverage 98.96%, WER 0.0104
+[51/100] ours wiki_de_random_01_default_seed42: coverage 97.24%, WER 0.0276
+[52/100] theirs wiki_de_random_01_default_seed42: coverage 97.24%, WER 0.0276
+[53/100] ours wiki_de_random_02_default_seed42: coverage 91.35%, WER 0.0977
+[54/100] theirs wiki_de_random_02_default_seed42: coverage 92.11%, WER 0.0827
+[55/100] ours wiki_de_random_03_default_seed42: coverage 92.79%, WER 0.0766
+[56/100] theirs wiki_de_random_03_default_seed42: coverage 92.79%, WER 0.0766
+[57/100] ours wiki_de_random_04_default_seed42: coverage 98.62%, WER 0.0138
+[58/100] theirs wiki_de_random_04_default_seed42: coverage 98.62%, WER 0.0138
+[59/100] ours wiki_de_random_05_default_seed42: coverage 86.67%, WER 0.1333
+[60/100] theirs wiki_de_random_05_default_seed42: coverage 86.67%, WER 0.1333
+[61/100] ours wiki_de_random_06_default_seed42: coverage 83.16%, WER 0.1785
+[62/100] theirs wiki_de_random_06_default_seed42: coverage 83.16%, WER 0.1751
+[63/100] ours wiki_de_random_07_default_seed42: coverage 91.01%, WER 0.0936
+[64/100] theirs wiki_de_random_07_default_seed42: coverage 91.01%, WER 0.0936
+[65/100] ours wiki_de_random_08_default_seed42: coverage 96.74%, WER 0.0358
+[66/100] theirs wiki_de_random_08_default_seed42: coverage 96.74%, WER 0.0358
+[67/100] ours wiki_de_random_09_default_seed42: coverage 96.90%, WER 0.0310
+[68/100] theirs wiki_de_random_09_default_seed42: coverage 98.06%, WER 0.0194
+[69/100] ours wiki_de_random_10_default_seed42: coverage 86.82%, WER 0.1636
+[70/100] theirs wiki_de_random_10_default_seed42: coverage 90.91%, WER 0.1227
+[71/100] ours wiki_de_random_11_default_seed42: coverage 95.28%, WER 0.0515
+[72/100] theirs wiki_de_random_11_default_seed42: coverage 95.28%, WER 0.0515
+[73/100] ours wiki_de_random_12_default_seed42: coverage 93.70%, WER 0.0756
+[74/100] theirs wiki_de_random_12_default_seed42: coverage 93.70%, WER 0.0756
+[75/100] ours wiki_de_random_13_default_seed42: coverage 95.13%, WER 0.0531
+[76/100] theirs wiki_de_random_13_default_seed42: coverage 95.13%, WER 0.0531
+[77/100] ours wiki_de_random_14_default_seed42: coverage 95.83%, WER 0.0455
+[78/100] theirs wiki_de_random_14_default_seed42: coverage 96.59%, WER 0.0417
+[79/100] ours wiki_de_random_15_default_seed42: coverage 95.98%, WER 0.0452
+[80/100] theirs wiki_de_random_15_default_seed42: coverage 95.98%, WER 0.0452
+[81/100] ours wiki_de_targeted_01_default_seed42: coverage 87.21%, WER 0.1279
+[82/100] theirs wiki_de_targeted_01_default_seed42: coverage 89.18%, WER 0.1082
+[83/100] ours wiki_de_targeted_02_default_seed42: coverage 97.64%, WER 0.0394
+[84/100] theirs wiki_de_targeted_02_default_seed42: coverage 94.88%, WER 0.0669
+[85/100] ours wiki_de_targeted_03_default_seed42: coverage 93.38%, WER 0.0836
+[86/100] theirs wiki_de_targeted_03_default_seed42: coverage 94.08%, WER 0.0767
+[87/100] ours wiki_de_targeted_04_default_seed42: coverage 92.62%, WER 0.0906
+[88/100] theirs wiki_de_targeted_04_default_seed42: coverage 92.62%, WER 0.0906
+[89/100] ours wiki_de_targeted_05_default_seed42: coverage 95.71%, WER 0.0429
+[90/100] theirs wiki_de_targeted_05_default_seed42: coverage 93.56%, WER 0.0644
+[91/100] ours wiki_de_targeted_06_default_seed42: coverage 94.41%, WER 0.0658
+[92/100] theirs wiki_de_targeted_06_default_seed42: coverage 94.41%, WER 0.0658
+[93/100] ours wiki_de_targeted_07_default_seed42: coverage 90.77%, WER 0.1000
+[94/100] theirs wiki_de_targeted_07_default_seed42: coverage 91.15%, WER 0.0885
+[95/100] ours wiki_de_targeted_08_default_seed42: coverage 94.07%, WER 0.0636
+[96/100] theirs wiki_de_targeted_08_default_seed42: coverage 96.19%, WER 0.0424
+[97/100] ours wiki_de_targeted_09_default_seed42: coverage 92.24%, WER 0.0776
+[98/100] theirs wiki_de_targeted_09_default_seed42: coverage 92.24%, WER 0.0776
+[99/100] ours wiki_de_targeted_10_default_seed42: coverage 94.24%, WER 0.0606
+[100/100] theirs wiki_de_targeted_10_default_seed42: coverage 94.24%, WER 0.0606
+Saved grouped summary and paired differences

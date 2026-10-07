@@ -13,8 +13,6 @@ import numpy as np
 import soundfile as sf
 import torch
 import torchaudio.functional
-from transformers import AutoProcessor, WhisperForConditionalGeneration
-
 from benchmarks.tts.omnivoice_longform.common import (
     mean_and_stddev,
     normalize_text,
@@ -23,6 +21,7 @@ from benchmarks.tts.omnivoice_longform.common import (
     write_jsonl,
     write_text,
 )
+from transformers import AutoProcessor, WhisperForConditionalGeneration
 
 DEFAULT_WHISPER_MODEL = "openai/whisper-large-v3-turbo"
 
@@ -91,6 +90,10 @@ def transcribe_waveform(
             language=language.lower(),
             task="transcribe",
             return_timestamps=True,
+            do_sample=False,
+            num_beams=1,
+            temperature=0.0,
+            condition_on_prev_tokens=False,
         )
     return processor.batch_decode(predicted_ids, skip_special_tokens=True)[0].strip()
 
@@ -246,6 +249,7 @@ def run(args: argparse.Namespace) -> None:
             torch_dtype=dtype,
         ).to(args.device)
         model.eval()
+        write_json(output_dir / "whisper_generation_defaults.json", model.generation_config.to_dict())
         if any(parameter.device != torch.device(args.device) for parameter in model.parameters()):
             raise RuntimeError("Whisper model parameters are not on cuda:0")
         write_json(
@@ -302,6 +306,9 @@ def run(args: argparse.Namespace) -> None:
                         "evaluation_status": "success",
                         "evaluation_order_index": index - 1,
                         "transcript": transcript,
+                        "asr_input_samples_16k": int(waveform.size),
+                        "asr_input_duration_s": float(waveform.size / 16000),
+                        "asr_mode": "whole-output sequential; truncation=False",
                         **score_transcript(row["text"], transcript),
                         **silence_metrics(waveform),
                     }

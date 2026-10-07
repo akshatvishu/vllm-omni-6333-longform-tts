@@ -1,0 +1,12 @@
+{
+  "generation_attempts": 100,
+  "successful_wavs": 100,
+  "extra_generations": 0,
+  "seed": 42,
+  "audio_hashes_verified": 100,
+  "same_split_prompts": 27,
+  "same_split_identical_wav_count": 2,
+  "zero_candidate_count_matches_expected": 100,
+  "zero_join_validation": "UNVALIDATED",
+  "source_hashes_match": true
+}

@@ -1,0 +1,1002 @@
+[
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_01_default_seed42.flac",
+    "wav_sha256": "0f042a9592cc3a60d86c01ecb7d4237fa6ebb0637539b3911f2845e0e1407f66",
+    "flac_sha256": "47eb61d33c764583c1a1bb29523bbef064d6f2b58ffda5477d81076230d93de1",
+    "pcm_sha256": "207449bf3cb18371e153c19fb90c365c556016959abc3aaadec7bb45a2eb3671",
+    "frames": 3211200,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_02_default_seed42.flac",
+    "wav_sha256": "3486bdb8bde06ae0c62d44c8f7ae53f59daa24061aa66155da76759c655c2fd5",
+    "flac_sha256": "cc166d874d8c6bf79bb06ef25ac62040a81077a67ebda0c4ff06d8854905a619",
+    "pcm_sha256": "5e83ee1734f93e56df205cf38407a537d1265397903083ca067c388a8daf0c5a",
+    "frames": 2837760,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_03_default_seed42.flac",
+    "wav_sha256": "95c808eee4d0225858e6de38255a5564a30cbe84406f05b8781aecf005f4c42a",
+    "flac_sha256": "f8c73ab42c0f1c5e625000489928c38d3d6859588e7877d98c33663d001b4c7c",
+    "pcm_sha256": "746542e807742fe84101322902b9c6586631ea256125230b48bccc9d6f75b9d1",
+    "frames": 2488320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_04_default_seed42.flac",
+    "wav_sha256": "4943186b332ea1adaaad724c322be1b116da4488ae1ace59a2b40917ad14fa18",
+    "flac_sha256": "ade5e878399d204e40876ae655fba4616db484e6ae948b7ba8d9946b5e1a712e",
+    "pcm_sha256": "0960a63c18e4085a6fbd5c59cffbda77ee1e73fa73c8bd674de7759e8668b174",
+    "frames": 3142560,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_05_default_seed42.flac",
+    "wav_sha256": "492782308baf17a94f5d4f66b9dd4b313718d85ee5ab19cf2e6b82e118d3a927",
+    "flac_sha256": "be167dd3872c4dbab5c966deee38283bb269bc6e7a56321599405864a995f7a3",
+    "pcm_sha256": "3c988dc30fb88374857220b101743978d93333c3f7c4773b627e11f261f68883",
+    "frames": 3493440,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_06_default_seed42.flac",
+    "wav_sha256": "c00625cc6193f8ba23d5bcd0425ec23db03e99082081c8539a91c8cd4851b47f",
+    "flac_sha256": "23957a95769a4d91798f70efcfaedac877804dd992c1c7f39c21518d658c4743",
+    "pcm_sha256": "7f63302a4db79bf8e898f7811fb2cc7faae9ef6935d12d0ed369c78e3d614ac0",
+    "frames": 3286080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_07_default_seed42.flac",
+    "wav_sha256": "f518fb60f861d7253a499c47b473fa1285b4e966591dafcac3f319092446d8aa",
+    "flac_sha256": "4dc27ef32846193fe2c5c3fc1f1f20677535d69bc56f35359e79ce6d58476e7b",
+    "pcm_sha256": "5c4d153d93037f52d525385b7e248fb5fb998bbfcf6aedb8e39c3b8808846495",
+    "frames": 2975040,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_08_default_seed42.flac",
+    "wav_sha256": "69775129880548b9b9a2a13663e6177766c855d7385e291f3fdb3c29e5dfe8d3",
+    "flac_sha256": "0a1dc1167883487c05bd0585768d25b0be9de00a3b1acb3bcef34ea2cd0d0c98",
+    "pcm_sha256": "76e5e9349df46a439db4a1d352302e9f2e9202d7bb3ffbc0bf6d2e73557d1591",
+    "frames": 3481440,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_09_default_seed42.flac",
+    "wav_sha256": "a47dc4f11d58853d1f3ed64ce36147f9c3ccdaf6af6a0cbdeb5e96cac1c373f7",
+    "flac_sha256": "7e46b5e88c8ac8a04a694af9a8d477691ea9d84eba8f8612bdd753ed0b807700",
+    "pcm_sha256": "f58a579bc34507bf187ceb19c3971300633304153ffd4c9bc90408d6bacace44",
+    "frames": 2931840,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_10_default_seed42.flac",
+    "wav_sha256": "192baa02c9649d1e3911858fad0ac276d23f2139c9c0e7a539947a3da7e95ba3",
+    "flac_sha256": "891c3982bdeeea0d107c61668ef8046e6db549e1f472a2c1755fecc3cd4a8dce",
+    "pcm_sha256": "76b2ca035983aaacfef21bcee19aeb3da30cb185a6fffa03c0917fc781905b08",
+    "frames": 2140800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_11_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_11_default_seed42.flac",
+    "wav_sha256": "916cb0ad5e22c85d7126570e901592881eb37fd6bc5f6f2491c0cbcc59f289bc",
+    "flac_sha256": "44de1d27e713c717285689750173dcc679d7740e91318dbf5f50c74ac5e152f1",
+    "pcm_sha256": "b76c2ab2f06e5cab24be617344f470dd142a46f6d049814a09846558a6e749c0",
+    "frames": 2732640,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_12_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_12_default_seed42.flac",
+    "wav_sha256": "76b207dd6e57d080ca4200e77aa64c7e292fbaa91331f1b4723dea31e7a3acd5",
+    "flac_sha256": "23b928eb728f86274949034cd5348ddd070b5a38ff28e43fd3d28dd7aefdf2e9",
+    "pcm_sha256": "88ee6d2a3ace18068560360679c902adc478210993bc209967b0d747f6bf91a2",
+    "frames": 2884800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_13_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_13_default_seed42.flac",
+    "wav_sha256": "b764b733deff37fa228e569de6bf1366659642665ca30a7d196c1b6f8384bafc",
+    "flac_sha256": "a593889a62a623dd10f3b64063d476f0c3925c88170204cb15d5f2070dfaec62",
+    "pcm_sha256": "3657ba839b68b9692d8e5f0cc978ccd0cf6ee1cf0f24faade677b0b78d301903",
+    "frames": 2464320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_14_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_14_default_seed42.flac",
+    "wav_sha256": "a9cc94351c17ec5ad56bf2548e63b8d8a84a5bde1d8d14bec0aab1dfe292efc2",
+    "flac_sha256": "290b82a267a7905dbe58823e3b98d3326191ff81c786d79f6a8cfe6f2e815f5d",
+    "pcm_sha256": "96a79a634acd98f9da8103da147f273b488d405964cebc7f0661219bb169dad1",
+    "frames": 2820960,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_random_15_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_random_15_default_seed42.flac",
+    "wav_sha256": "c84285b7c6b84a0b72098481b3ccb85f2617ef1da22a80a9c43417d9d0c69d06",
+    "flac_sha256": "af336b15b3af93ebe7e25117d58d820c84b396d24370896ae3f591a22cf05304",
+    "pcm_sha256": "045e86432db6a6e1538c37d3487a53b06c5cba1b62db2fc7be7d601bd210f462",
+    "frames": 2316000,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_01_default_seed42.flac",
+    "wav_sha256": "8503eb1c4b3e1fdf757ca1ccb7ea393428fb6dfc6dd90ec523125c1f21513e91",
+    "flac_sha256": "3b0b39de478f3307938c6c5da27d4e8aa696480e53cfeedd1bdf794f7fad9690",
+    "pcm_sha256": "2e5be4544605702f1520f1b1912c7fc69dd8026fbbee04769d1b301719040eff",
+    "frames": 3375840,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_02_default_seed42.flac",
+    "wav_sha256": "ceaec9abf08b3d21b2ff45dbe2afc1499717c3150150c3ed271bb4b8c19ca5b6",
+    "flac_sha256": "b276bb3eb44d73a918f2398944b79836def8c52d43731ff3d075090e674421bf",
+    "pcm_sha256": "b52732bbdde1e3b3a4c2efb6aadb6d968a36076c4888e43f435ac82556d34e99",
+    "frames": 3235680,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_03_default_seed42.flac",
+    "wav_sha256": "3555979b549a87f5cf51ac888f9730fdd515cd099be3b8d15c59635eac9a5af9",
+    "flac_sha256": "3b2d6b2e0db65e549472d0ffa66d38a182fe38ece840fb86fdba912539dd5378",
+    "pcm_sha256": "581b5b71211e8b44bfc4eda8828f275b6394b7f3939a822adc7b4d0047756376",
+    "frames": 2946240,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_04_default_seed42.flac",
+    "wav_sha256": "745cf1f7de8c6543f3c789a100446a68cacca5dfaf40eb3a0b3bf2e60ccb7daf",
+    "flac_sha256": "fdb144d88ede48e0d88b04e2fb5d7c8b288d5dd7533283773040d3a31bf968f3",
+    "pcm_sha256": "e88114c669944344ab26ab93f60f551cf0a41ba2e34f22d93c8ea6c1584bd5c9",
+    "frames": 3443040,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_05_default_seed42.flac",
+    "wav_sha256": "4829f6e75575885470bb4d378de651b7fc6b48f1da71006c48b5e2e59fcf55dc",
+    "flac_sha256": "debd6a50af6f5d3450e555bd0d6336a60b12a504366bc08e63167d4be882f58a",
+    "pcm_sha256": "9428b433a3a2905bd2afbbea04d0494d431fd54538ddf3a2f9a48f5cc5e37810",
+    "frames": 2580480,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_06_default_seed42.flac",
+    "wav_sha256": "7d9ebe311572e642db43fadbb83657d31c3caf4f8d80a3760a425cca312ac608",
+    "flac_sha256": "ea5389d21871ce189efd39b24a7d242819c2fd758b8234e216ee67ef9405a01d",
+    "pcm_sha256": "66e0c6d42e2a1ed9b174bee84ab031ae5d05554056d4b3ae4efe6b2e64233cc5",
+    "frames": 3414720,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_07_default_seed42.flac",
+    "wav_sha256": "8ab08c165421a35e7d73b811febd5a02425c3f3d0ddec8d3fc9ffc0f5af3cfd5",
+    "flac_sha256": "5d196db54f64fed77b838e6d5e5a97f6240be78ec74d98d8fd8c54c44837427f",
+    "pcm_sha256": "0f8ec1c0ac9848d133023005d5d1e3acfad52681d8f0255e9864cd22b2cd47e4",
+    "frames": 2895840,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_08_default_seed42.flac",
+    "wav_sha256": "3eff8c76fddb76d689d2734dbfee21f0cf0af106b0f5b84d7a3fd2962824cfbd",
+    "flac_sha256": "dbbfb95e65724f3f9fd7ceefbec76f4c334b0572a7ee1b0085cc3b4148d48888",
+    "pcm_sha256": "01dc8bae133f1a3b17844170c64bce044ef423e8f2b0ac6932549f82e525e88b",
+    "frames": 2857920,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_09_default_seed42.flac",
+    "wav_sha256": "7a2bb0e9fdb79ec153f099273b03bf3099569d8a38ee624b0cc615a8a8ef6432",
+    "flac_sha256": "4adde459823613523ccd7b39248f5008f5fff50782c9772b9799d869b40343a5",
+    "pcm_sha256": "9945512b4726cf7b14423952de78429ce6c01e708ff7c6bd83c27feac38c7c01",
+    "frames": 2494560,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_de_targeted_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_de_targeted_10_default_seed42.flac",
+    "wav_sha256": "a7179bd4934677341602ae7f56039e67def50e9aec657448afc6c4cc1f5e7fb2",
+    "flac_sha256": "51f39e286fee8668560948dfe21a1c1c1837bf6f639ee14e23089419dfca0380",
+    "pcm_sha256": "66d7073b30fc0a2126f8463995276653cd6d4f51a7cbbfbbfb16dad8dc7a4c1b",
+    "frames": 3482880,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_01_default_seed42.flac",
+    "wav_sha256": "431b7f665fa64a1d6ee3eecf37baa31abd8becfefdb428f611e2eb440272ffe4",
+    "flac_sha256": "710ecbb8440b41a27a87790bd3efea3c18eaa79b9acf26d774d2f632dbe7d182",
+    "pcm_sha256": "39d7d5021378635f9d8e98530bb6ebe6b34c13b6b8aef59ec76d64f339e4639b",
+    "frames": 2265120,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_02_default_seed42.flac",
+    "wav_sha256": "cdb5ee2bfaed9e6a510f2c59344fab1ab272b1f36b607bce8f3ef846554ae7e3",
+    "flac_sha256": "1dc6d5be297cec6f3fd68f8e286de934872aecc538daa9b8651c41f02c7784ab",
+    "pcm_sha256": "0fd9e18d23c5c5af7797a93881f90892af44cddb214a9b25b32a3b7367dc6178",
+    "frames": 2143680,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_03_default_seed42.flac",
+    "wav_sha256": "7ba3616bccaea4d08b03d83bf262220da3c07755d923e5e44ca0b48a14d6f7aa",
+    "flac_sha256": "060db9fdd17cb4a10c88172fb07e8366e38a8eb8fe3871a85f2219571b9b2404",
+    "pcm_sha256": "9879de2703f43c17866362d5ad0f61c8cb8819d8e9328a0747fd99d2b64c109b",
+    "frames": 2530080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_04_default_seed42.flac",
+    "wav_sha256": "7e246f727984dc67c5aa28e640d1adcf4c0bbfc298bbbe7e9b10408239521643",
+    "flac_sha256": "cd0090212a50ddccb496a344e3805c7e4b3e113d81ef4d193e90c053eef03f99",
+    "pcm_sha256": "6243306fa66aa3e23f78e23cc2bde7964beb505c6793c3a18c04841679c5a666",
+    "frames": 2189280,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_05_default_seed42.flac",
+    "wav_sha256": "282da9bce243f58629b0418abcb5151c689f886aae7aaf933f82b5b06cead436",
+    "flac_sha256": "623d15806c2d4fdf5ff5e4d659d602317ac5ba5bcf47f06805ca5d6438b1678b",
+    "pcm_sha256": "888ba17d7e7a00393f5b20ecdc27f1575ed84709dbe3f00a728eb0bafb7e9045",
+    "frames": 2704320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_06_default_seed42.flac",
+    "wav_sha256": "5b23cd6e9b4a8b71f93cbdaa28b53f036f244e56584cc4db5d1547bdf9206606",
+    "flac_sha256": "0a96f154dc25db00bc45c3c47bb13d634115303f1f189e022f24c9cc5d088ae7",
+    "pcm_sha256": "ae8a939dd4686349a040c68eea087ee94b677205cff7b8a6e3ca758eea20c6c8",
+    "frames": 2188800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_07_default_seed42.flac",
+    "wav_sha256": "303c9ce10351c801182d3ab225b92fafc74cfb15890ca120d97705ba4ab662f3",
+    "flac_sha256": "e3b56dd5afb56ca02d01c8f4f8671913a93ab10f5cab316b5dbeda941ca69377",
+    "pcm_sha256": "21a0c368995ca0953f2415dfeaf9d5610b193bc045becdae5a7fff8e3598d90d",
+    "frames": 2754240,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_08_default_seed42.flac",
+    "wav_sha256": "503cb46baac7ec638e9d445e07e643fb38da135a9087eca96df93330e0dffca7",
+    "flac_sha256": "399d7a1830b426aba4c710012a832f6871b05020971f9716ebb0a19b3abe0cd8",
+    "pcm_sha256": "ea561bf064b7e70648e80e910a0f68c6857ad4ad7bb7e28a4134070bd3d7c093",
+    "frames": 2036640,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_09_default_seed42.flac",
+    "wav_sha256": "ad084103ab7ee3be902ee008aa77e1e1d0cec5f345ac8d2ef0ea3ccd07c30fd7",
+    "flac_sha256": "ea38b8e36cb204ad60b30e1427b5661f433337b5f1dcd68e83e2e4a2fb092b2b",
+    "pcm_sha256": "43ee75c2a7c97e38fcf26585073205ebc7fa17751361299276a7bbd330da82a7",
+    "frames": 3214080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_10_default_seed42.flac",
+    "wav_sha256": "99fb082e69ca6d75fb107ab4c7545bfa9256028a81b553fa21a6bf6def7867cd",
+    "flac_sha256": "0f0128300179a6b2bc4ce4fb6bcc27c2d1c3ba279f4bad545a704bd21ff02c4f",
+    "pcm_sha256": "c27139ca99cf3f6e46edfd9de2e0ff454013295995b47c71142f53eba83870ca",
+    "frames": 3031200,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_11_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_11_default_seed42.flac",
+    "wav_sha256": "60db5ddcbfaaba70a8de5068f73d0909ff3cef25f5e856b0a377aa6dcdaaff37",
+    "flac_sha256": "27a851cf234ebc5cc527e99c123669b5fe7029acea554b4b4f02d4e80d63dbab",
+    "pcm_sha256": "1503e66583b33463d50a42b9a0d19d2e4f0bb9443a44f1d5a4c6206fb929640f",
+    "frames": 2904000,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_12_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_12_default_seed42.flac",
+    "wav_sha256": "0b7fd92229de19ffd4fde233e18a0af4cc46091fa35a2fbbfd6a8ddbbc57e3c0",
+    "flac_sha256": "b249fee392ff6f6892afce3506c610ff8abd2019b66039366dcf13576c04a10f",
+    "pcm_sha256": "240531129964a8af525d193cca39fd1b2bef946463af94394ef220db64002672",
+    "frames": 2991360,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_13_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_13_default_seed42.flac",
+    "wav_sha256": "ba77a2c51e7249203decca96fd6a04dd92c6561520fefbe518d5986d7a65b33c",
+    "flac_sha256": "27fdcfe43c80b99a989fc9d460b5c29d4c367a0eb62cc676e1c880d1ece92938",
+    "pcm_sha256": "a80f1adcedc9821e0d354a166c0bae8877b71cd86dd1623112385fd023ed42ef",
+    "frames": 2812320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_14_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_14_default_seed42.flac",
+    "wav_sha256": "11b546522f02cdd261ae65fd3b279ba37a59c7c0c510482e1c68df5e7ded00f7",
+    "flac_sha256": "a1d79e8f14ca39565f82f37d442710e4d0907ca40c35ba9651f21c816d768fed",
+    "pcm_sha256": "e212360ad16971d466359d63fbc9de91021b6a768913991adf5f65f9313f617e",
+    "frames": 2651520,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_random_15_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_random_15_default_seed42.flac",
+    "wav_sha256": "4ff6dedb9a8cbb3e609480248d29f735cc4eb798cf3d47a3c889c3ac6c2a0919",
+    "flac_sha256": "56633f00e2d51920dc0b849d857e7703200706d1fcb08fb08e7b1f825003dab5",
+    "pcm_sha256": "187efbe13a1c34b3260fde93fbae2dcb3139a59bfebaf4ab21e6372fa6666d5a",
+    "frames": 2403840,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_01_default_seed42.flac",
+    "wav_sha256": "3f8db2f9cbdb8185a4cb7b0510e369202757ee879b19b4af94a7394ea0f09d82",
+    "flac_sha256": "3b7d70ff346f6b32027025307f9276ae3f38fc2bc6a7eff9f9a0863c1d85350b",
+    "pcm_sha256": "c225869c3a29cd4e67004973a5c2ae92a7673e4e389994d90b981faa0ec59094",
+    "frames": 3002880,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_02_default_seed42.flac",
+    "wav_sha256": "6bbaa68bba5c272e2e342c4e3832fc4866236903a47201ae0e7acc8e309ad00e",
+    "flac_sha256": "f169f541bde6dd5972e0f732fe677f5abba69e89555002e30339ebf1bc9f8fd7",
+    "pcm_sha256": "a66b028e839eb59e51d25a924e3edd8b4fa96a7e6e2aa476650cb8d918c106b5",
+    "frames": 3038880,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_03_default_seed42.flac",
+    "wav_sha256": "a7da31903c9de4ddbac54a7068f087a9b47067dd311637ba163e7543b488d219",
+    "flac_sha256": "a02bb92572f05a9a9e9c23406cfe2d661c128c1ce6ba1b8473cd84eebf583781",
+    "pcm_sha256": "8d059942d88cbd8c655f3b3a814036f35c1bf2bedbcc854cc6127469b0850794",
+    "frames": 2885760,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_04_default_seed42.flac",
+    "wav_sha256": "99b5ca03d97f80aeb84b0f621312bcf36d74827e9cd8e2008e9b8392b65eb259",
+    "flac_sha256": "b64ac43768759789ffb7b444bb5563904b18752ffb39f4af5cd7a6d74cd095a9",
+    "pcm_sha256": "9aab1a060da8534105d56f172246a00d9926b0a4b049c85f147ca8c521e8bd49",
+    "frames": 2391360,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_05_default_seed42.flac",
+    "wav_sha256": "7495d6cdef0837db32f2a0fba74e785a0b9b0f6adb5fb00632b44af6c279e245",
+    "flac_sha256": "2c7402882ef081460acb99b8ba1413784d674c76e2405d5d5e0f4b7af50c3002",
+    "pcm_sha256": "d121a8bdce79bc22dddf46bd06471d42f56d7bf22862cdf75e20d5b7fc14a4df",
+    "frames": 2642400,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_06_default_seed42.flac",
+    "wav_sha256": "3b47a85e04d55c7cc67c4fea14462bf8e02d8a73f39da6b2c7b5126d906cf83e",
+    "flac_sha256": "a3259ba077ab0433faa0c5031425942016cf365ecb486c178844dae66baa31b0",
+    "pcm_sha256": "00641bbcc3c4eebc339ae7ab19eb75d3bf799b40e5d68505e7616d77d74590aa",
+    "frames": 2817600,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_07_default_seed42.flac",
+    "wav_sha256": "90319a4b0e22efcaa0212c732f83259055a903ee9e3143e9067f84e02bff3664",
+    "flac_sha256": "785241772a2ed2e68ee13af545571fdffd1c4573472d8c5722fa3c7228335d88",
+    "pcm_sha256": "6ab8a6205e433bc2b9312ce0f3dd847b0be575b673148368d956c53b8e203b47",
+    "frames": 2836800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_08_default_seed42.flac",
+    "wav_sha256": "7e680ef3ad74542fe890b9f14510d8868ac45f224492319eee1b76a6f70bf5d5",
+    "flac_sha256": "74fc1f11b5c7327b2c7df135f6f4ed5869837501edf46460ce080fb3f9da4b3c",
+    "pcm_sha256": "1b6a32c2c72b6daed2b0683c3badab2a7d0a3686464de7f97791bf09ea627b51",
+    "frames": 2600160,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_09_default_seed42.flac",
+    "wav_sha256": "edbbdda84ebcfa98b6d91991c7780f9a7416ab7410d2f2c81b3066aa7cbe71fa",
+    "flac_sha256": "cd2c10a903372796e5604d0a8e03fe79550b5715d82fb27441d61466744264c3",
+    "pcm_sha256": "7f171d63ead67828c86134582b41bff973f5cd3e3be7fab5e98e7d8a67368c3c",
+    "frames": 2542080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/ours/wiki_en_targeted_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/ours/wiki_en_targeted_10_default_seed42.flac",
+    "wav_sha256": "c03f71bc4fda8c91264085eae48833cce4647805d6faac59ed52a249ad6cc6bb",
+    "flac_sha256": "f7bcffab2b435d2c947ca656a6112079907f321a4b0bf3ac2bc2a572b84a2cfb",
+    "pcm_sha256": "2728e429f4f0845f17d782fcda15ce7dabfab62173979153b6272a34a03047a5",
+    "frames": 2899680,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_01_default_seed42.flac",
+    "wav_sha256": "59b9b58de40a8f844089961943e7dda5dbef7b2ba606f256b23e321762099e76",
+    "flac_sha256": "1bcf90cd41ac1d17a75558fc41982cc19da8d84f53473bbf73ece1c9b0a0f6a0",
+    "pcm_sha256": "16d96d916b107e3ce98d9f64da6f4331147d6e156bf2a19adecf2b8cc177efb5",
+    "frames": 3208320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_02_default_seed42.flac",
+    "wav_sha256": "9c0d40179b82769d06fdfece8f3051515738c22cb049a3227e560b64d4eacfd5",
+    "flac_sha256": "52c1df1d9f3b5ad35901505b2c35131bf204d23663d920f5ed4a7f29734c4760",
+    "pcm_sha256": "aec3750c5311feafdb7d3037b42be34f04f6183bb48b9f92999b2d833f8f60b3",
+    "frames": 2835360,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_03_default_seed42.flac",
+    "wav_sha256": "70d8ce955d51d3c937b35e71efa29d1b9043be454124641104e1ab6dc9456106",
+    "flac_sha256": "fa4248fb46b950eaef6f0129dc55e28f4d700165ccf2b87ad1b67e97f017b972",
+    "pcm_sha256": "85a09063417fbbf05e55f0928863093965ab4a110a7d485199fafa3ac57889a6",
+    "frames": 2488320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_04_default_seed42.flac",
+    "wav_sha256": "e878c419607c54facfeff0aa21da5bf1ca8dd395f28323d46ba45a7b1624957e",
+    "flac_sha256": "8b2c78f8f89e1c0dc06236c02f3d106e77c0d22e0ff30ed03a9f1ada62e9cfc6",
+    "pcm_sha256": "84672ec906597e417a9a738f25a92a87eca2a1135e5ee7b79a51bb3cb2093469",
+    "frames": 3142560,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_05_default_seed42.flac",
+    "wav_sha256": "0a52ec4f81d83c622b7dbba7f98dfab503ba0be1f080226cc3058da45bd02ffc",
+    "flac_sha256": "82ab5183dab7e0afa56a1bd7e08665511d1f808db230bb89d31274a1a28ab485",
+    "pcm_sha256": "5b28695bb318081187aab57ad32b5350d54660a8a88214c6c2e9156c484caa8e",
+    "frames": 3493440,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_06_default_seed42.flac",
+    "wav_sha256": "347fa3507b8e24519d43184f5bf8cfbb84f676f3246dd608ce50d47db018dd84",
+    "flac_sha256": "3a0400289806828af7e1d9ea1204032b4c7ff4cad837c6fa93d7488913ae6db7",
+    "pcm_sha256": "3ea6ee4d5fdafcd8e76f4c664232ef9fd9112d04159f511a44a8a8de5e71e877",
+    "frames": 3285120,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_07_default_seed42.flac",
+    "wav_sha256": "edc57e874933a5922f3ef84c40b5a3ecf6d999f80e977c0adfa70c59eb3c7815",
+    "flac_sha256": "16cad949832908aea670c831bf284879e983cbaedfc3c7a9d3b22750051b941b",
+    "pcm_sha256": "2fe53fd8f6b08dbc4af0b38c9d2a370bb3ce916bc854eb3aba27d8474fec48d1",
+    "frames": 2975040,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_08_default_seed42.flac",
+    "wav_sha256": "1a77dcbb7cb7be397497491684688d0645a389d5846cf8e0c71c1d43aaa05261",
+    "flac_sha256": "90cb57960df11bd5440d4bbf552f332f7de87a6d6d12f1e40c0d3131e228a08c",
+    "pcm_sha256": "a490ecfef545476c6355cfb24d239fe8ddba14f6c07e57cd54a2f83072bae4d2",
+    "frames": 3481440,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_09_default_seed42.flac",
+    "wav_sha256": "8ce214703fcd299b58ba23ff380342964d7f9d53bd6f551cb0efd9025c7505c9",
+    "flac_sha256": "e1d2ef097b929c595616ed1c29492af545dd8fdbd93a1bda639a12ae8c0a0132",
+    "pcm_sha256": "b7e2df37e36cec140bf4cf374b506d70c70dd90bb13c4f1f53f2d27fa7154a3f",
+    "frames": 2929440,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_10_default_seed42.flac",
+    "wav_sha256": "e0d896ab431b6fe8ccde57a4544f04d7a30f70b8a57886a305b03d45b3b9faef",
+    "flac_sha256": "7c893568e298bf72399aa080c18fb275ebaa2815b53b7a28c86333c1733fc356",
+    "pcm_sha256": "2f199693b62ea76123381db356faf53e155ecddad83d952ff0edeba476cadaa3",
+    "frames": 2140800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_11_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_11_default_seed42.flac",
+    "wav_sha256": "8ce84cd0f8d44c453ec634dbb9c9be37d99dd550810ba03ac4285062b460cb27",
+    "flac_sha256": "a77e6b3ac491b66bed85cfa6caea1b69e8808ef4d74c9515e1992be4c26983df",
+    "pcm_sha256": "72a412a364168e92502e6c6a17d3c7458dfdf9fa8b7450a8e1d76a528c3f2a4b",
+    "frames": 2732640,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_12_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_12_default_seed42.flac",
+    "wav_sha256": "508d04e02ee9198e1388a90870bf8d84e2c19162147a136809ef7e424346b5cb",
+    "flac_sha256": "c694c7fd0bfdf6e8e5d023bdbe1002a519d2bc9898adb07aefa956f1fc21ba7d",
+    "pcm_sha256": "96844347bcd729af6eb25f0074fb1aed7d5f848b6b6b9e63587455145ecfb000",
+    "frames": 2884800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_13_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_13_default_seed42.flac",
+    "wav_sha256": "29b0ca1e3205c1b3c63f891c1e59566293de394e6e66aeb4797d0686f2454221",
+    "flac_sha256": "6aa58141db58fc1888675dfe3c4a1d71073cd84ea4fe49f5a1ff2c152d1ddd99",
+    "pcm_sha256": "0e64a3902cd2d1d98bf4a4dcb027982c2bfb5d5dfa2f7c62598248cb650bf937",
+    "frames": 2464320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_14_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_14_default_seed42.flac",
+    "wav_sha256": "c05be17ad70e67954be3e9cb29db638eefd4aafb4ca12eb719a5aed16aee0c17",
+    "flac_sha256": "65a062ecc98fd74afe01e8c23d2ae4bdb021c0bb6ed59f78abfe1a52f9053d56",
+    "pcm_sha256": "353a5aabcba0b03d508de4ec61d556f71e9df260ecf5fdd475ad071858be1d54",
+    "frames": 2818080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_random_15_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_random_15_default_seed42.flac",
+    "wav_sha256": "c84285b7c6b84a0b72098481b3ccb85f2617ef1da22a80a9c43417d9d0c69d06",
+    "flac_sha256": "af336b15b3af93ebe7e25117d58d820c84b396d24370896ae3f591a22cf05304",
+    "pcm_sha256": "045e86432db6a6e1538c37d3487a53b06c5cba1b62db2fc7be7d601bd210f462",
+    "frames": 2316000,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_01_default_seed42.flac",
+    "wav_sha256": "52cd9ab967be6718e74ff8956f89515dd69b9cfc04fe62e8ad75ec1d0df8e994",
+    "flac_sha256": "9965b7373255884fdaaee5c1e1a5ae7277d1af6a9c74ae6c65bf021320f0395c",
+    "pcm_sha256": "89e278ad190933beae8c4dcddf4501b4b61080ee9409abd947bed15e0b39cb09",
+    "frames": 3385920,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_02_default_seed42.flac",
+    "wav_sha256": "8bf9fd7829befd6ebff073e9a695de17ff923ddc5c14b51adbb564beb74ec509",
+    "flac_sha256": "f2d4c5439575ece5ba050e9c8912108deeece243fc2842cb6f1096c4ab3541dd",
+    "pcm_sha256": "7ffc42a4f3f33ba7df88229421e256dbb67cf18def2b2e8d84f844fec96cffed",
+    "frames": 3237120,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_03_default_seed42.flac",
+    "wav_sha256": "553a0e8abd5473ff7eb370f63db1b2a838dedff7e889337ddf5a1afea6549975",
+    "flac_sha256": "450c971540a19f41ff3beb60337e81badc3f32ac93cf5f4dd14589b4bf84690a",
+    "pcm_sha256": "8881d4feeae80e1f7908b1b0164b868ffd7171cec475b39fe2b401dfcbb394d7",
+    "frames": 2946240,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_04_default_seed42.flac",
+    "wav_sha256": "96d5d5694ed1bc00eb835acaaf50afd0b14076b77b473321b0ebc3297477fce3",
+    "flac_sha256": "31fd01ed2b36cc34c3b46adbab36fbc3c50e11bab41d8cbb46b48fd031cee433",
+    "pcm_sha256": "9d242b6706b4fbf242e2ccca12dfefca501860fcf1608d4d43c34d55828582c9",
+    "frames": 3444000,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_05_default_seed42.flac",
+    "wav_sha256": "34d8ebe3970826f7dacdd784e0c67051ca1dc27a756a2dab4e787b6a4b800ee9",
+    "flac_sha256": "78cce448f4bfde75e6a6f601606ebf614229a38ec4342db19a1f2e6a50af569c",
+    "pcm_sha256": "399df2879dfe35cf3faf42fc2d0af4f2b8519847432e0777d6cfbcb06909fe05",
+    "frames": 2586240,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_06_default_seed42.flac",
+    "wav_sha256": "2ec7800ed1632babb097822c42513760a58064832003dc6b674dad64cc7c9e04",
+    "flac_sha256": "1fb00a2418ecd86c726206835d92407b114081785cc1b2eb8c835acb5f328cfd",
+    "pcm_sha256": "b091b5b4cb60d651bfe63f31e58a380d671b0d875e5e137667e7f45b87ec93f2",
+    "frames": 3414720,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_07_default_seed42.flac",
+    "wav_sha256": "3bc563a48d1e41d22c964c6b8da90afdc7ef8649d29c00dddc92d64ee500f383",
+    "flac_sha256": "61f62c10fbf00cec292a9f771e06d37edfe8709887fd6474bc1ba5170a33c502",
+    "pcm_sha256": "53d0a5fcc9b5c8ac15e5c68b7db18c97ea08ad08e85972f4b81a65827893b28a",
+    "frames": 2897280,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_08_default_seed42.flac",
+    "wav_sha256": "4e20c983bbdb0e30705bd8d49243fb12464c0a97d3e5ac0e9a425b1c40d19823",
+    "flac_sha256": "74249408296cb98272750d7d6879e63820aa9762fcd564976334f9b4f7599cdf",
+    "pcm_sha256": "53365c26729ed3760f7b76ca8cf6ddb3c0a6115a6fccdf71683143a3b9391b6b",
+    "frames": 2826240,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_09_default_seed42.flac",
+    "wav_sha256": "93d4de088f8eaeddda935c199c70d5410a93892720b7e0b439362e082c559d33",
+    "flac_sha256": "8f778116900286df116709f3561ed2610be58fb0a429cdc33f4c2ea999f0120e",
+    "pcm_sha256": "51144fe24349b96138d8e389b8c4d9389430a29310141fbcc1715202c5b773c2",
+    "frames": 2494560,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_de_targeted_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_de_targeted_10_default_seed42.flac",
+    "wav_sha256": "47fc38a7f34fceed3e583ffe17491e97023516a5ad8e527fa8bfb0a16ba6649a",
+    "flac_sha256": "c407d8a52290b648d0c5bd69bcf6e230bcf33464e594c02275a1d61f20220c48",
+    "pcm_sha256": "d22c0903bfb9f4077aa4fa6c15a1af7c2eb967a0263ecaa3d1c30bce4e134df0",
+    "frames": 3483840,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_01_default_seed42.flac",
+    "wav_sha256": "13eef1006c485c1eb25848d6feb291690adf8028bb4b137387c912286bfd6e7b",
+    "flac_sha256": "bd5d50967e85495b172f47d69e1b36b77f9d582bad5d5b8db7aec51d746355d6",
+    "pcm_sha256": "0a81a8782bae5cfe45e0e96f86f7b46bd06914eb2eda0607992e31cbdea6a4b7",
+    "frames": 2265120,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_02_default_seed42.flac",
+    "wav_sha256": "52b219717750ab111a6ae02d278f5006f96243358223a780dfe5faa557aa39a2",
+    "flac_sha256": "27d5af55259723cb242c943ddcb1a31f43b5248993d87e368df28e294a647476",
+    "pcm_sha256": "7d405feaa9de96bb451bb3dbbf652c7f5b2fed76dace6eb7ac25fd309aae08d9",
+    "frames": 2143680,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_03_default_seed42.flac",
+    "wav_sha256": "f3675f2afb6c439ca26b6f3b84325acf30131efe27fdbafbb956d5d3fdfb25e4",
+    "flac_sha256": "0cdc9b111b250df02d98abee742491933b85e684cbfee98fd90a248f3c3574f2",
+    "pcm_sha256": "bfe211fe2317128318412cd0b5b5676d475a46a8d6a82d757e0be42a3caa8309",
+    "frames": 2530080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_04_default_seed42.flac",
+    "wav_sha256": "0f5efb788d13166a2251b846312d0aac7bc25b6cb42a5d3f18bb8dd64fef3c2c",
+    "flac_sha256": "d2ddd45f1c6d146ba6cf43dc9613d1caf26d018d449f164663cebc7fd622c7f2",
+    "pcm_sha256": "b9c3a390e2c620fc63cd7adfb98d18c968470682b9d9f55fb48af614d9bcbe8d",
+    "frames": 2189280,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_05_default_seed42.flac",
+    "wav_sha256": "943fadbd576d74baeee21f2c4e2f03a316f466c85e201c61fe518ae8876ab192",
+    "flac_sha256": "734352ad9fcaf6252f590ca97f91942d0fa5e79bca4b966f0bbcc145358e1a32",
+    "pcm_sha256": "e7d681e50897a0bd91835887ad8febf9313b4882a28653cfc883733ecc9ec1c7",
+    "frames": 2718720,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_06_default_seed42.flac",
+    "wav_sha256": "051d324860c0bc9a087cd08664437be503f175eb7ca1583bb7abbb3f7bd3f89c",
+    "flac_sha256": "c40d06ff99fe55b1c9694b15bc680ec215cddf9f31ddb4e4105ae7a8d3dc7038",
+    "pcm_sha256": "049979925608aa48d039f83388949462d0414e4267988de1d0adc233b86d55c5",
+    "frames": 2188800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_07_default_seed42.flac",
+    "wav_sha256": "044eda1b94284234c727ce3b99676d7d4eea372271d9e68b0904edefe247463f",
+    "flac_sha256": "58c7cf583fc9c3032fd1afe5553e5c2b02b6be5ed88fdbdb6911f952cfa7882d",
+    "pcm_sha256": "c13786453f35c7e48c621a45dfff1d37049947d8d427dc42cf3a49f97e169f4d",
+    "frames": 2754240,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_08_default_seed42.flac",
+    "wav_sha256": "144eb4278a5b0918355bd8faf87dd6453d75210da33a464e90a79784fb0cf9dd",
+    "flac_sha256": "33d04af47f05e41b9a508fa5d1da15de43261a9e9330a9e402a7f241b5862319",
+    "pcm_sha256": "3fb595e446f1075011573ae6b8b6e3045270f97546a3570de179f572bc036d8e",
+    "frames": 2036640,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_09_default_seed42.flac",
+    "wav_sha256": "1e99a2576d0b01bccded120dd4d75c1cc0e43f4f2b119434bd6c1132d8ea8ab0",
+    "flac_sha256": "013317882c9bcb9176115cbdd054966294f5d314a2f2518cd460a516b5082567",
+    "pcm_sha256": "69a76959287bfd1db9102fce5b3ce5cea49ffe4764a01f4aef9d61cd1a0ed6e2",
+    "frames": 3214080,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_10_default_seed42.flac",
+    "wav_sha256": "1e29fdb7293607c318aa5c65000f2f561e8a11ca56747a5634313ac661052ae2",
+    "flac_sha256": "53f67991d34705a28836a1d73e036f2845176be15feb194b917363b1a6ae81cb",
+    "pcm_sha256": "35f12b0bd903069cac6991f7257287f3b9741107c5cc9ae2e8a9748fb8cd08b2",
+    "frames": 3031200,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_11_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_11_default_seed42.flac",
+    "wav_sha256": "e66b6a5d6bca96d0ff35abdcb85f5e07b7f5041b8f7b430a75c7cf657a76d546",
+    "flac_sha256": "042e2c22c839275b1e77513ecc9454f2db2f66060ed1ba720b8f55388c3311a9",
+    "pcm_sha256": "1228951dd1b2eb1953d71473081051739ab1b9827d47b19a36401388e9bc6e5f",
+    "frames": 2904000,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_12_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_12_default_seed42.flac",
+    "wav_sha256": "460f552a0fa8abdad6ad5fab991a6ec2a368d4489554d0f97e1820bd544f810e",
+    "flac_sha256": "22f1e93652beacfafe18bbbbfe90f932e7ca7f64d0726a084b09632dee33a957",
+    "pcm_sha256": "995b39a7085c65cba20f2b474c10586acc1fb2ece99eeb1fbb6c82a93d992012",
+    "frames": 2991360,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_13_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_13_default_seed42.flac",
+    "wav_sha256": "c813e06e65ab33b5a0ba42abee3c4a9cb4e0353d02d6b0d71eaa5144da18e4f2",
+    "flac_sha256": "2cd69c6a9d77a5cb588f16a8f9d04edfe685e5607e50dbcf0641942fead4a665",
+    "pcm_sha256": "abc5ed46e9d6ef4625408c48326914aa310b30e85d2d450398d799a1cc35363a",
+    "frames": 2812320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_14_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_14_default_seed42.flac",
+    "wav_sha256": "d2cf228c25d1945134c6103f31a7358a740981d8c27c29dcf6fc4ea94b30dee1",
+    "flac_sha256": "0a444f41c4cc78417b70d7730ac72098398237fe28cc5829592f5d47082a8dbc",
+    "pcm_sha256": "5649b53fea9a9c184242020cc6f0226d59eed589e0b2b64aa500013e87e9ecd1",
+    "frames": 2651520,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_random_15_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_random_15_default_seed42.flac",
+    "wav_sha256": "2ad6faccd8b49fd7a2ed4a6ce151b5c2d06570dd093b7d20db3875da6ba8d3f2",
+    "flac_sha256": "73ffad5abf464d5acfc5996dfcbecdc25b26f15d972696321e1082fd6ba5cb86",
+    "pcm_sha256": "af29b87cca133a53e44fea897eb2f72ce35bf26f5bc7e5b157b4ead2dd57f127",
+    "frames": 2403840,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_01_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_01_default_seed42.flac",
+    "wav_sha256": "7fae46ed6c2c78983e79e8274ac9130a19cd23df7e14a2222e0e7d03644b897e",
+    "flac_sha256": "77a7115be82cddac156e424e715677da35b1f34c9e638b5576f7d097c297f91c",
+    "pcm_sha256": "4d548cbcf3b8c823fda71b6dfbe07ee3800afead806d71ccfea0cf4e684fd223",
+    "frames": 3002880,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_02_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_02_default_seed42.flac",
+    "wav_sha256": "e793120034b1a40197233e2d82699c2c98b9290005baac666a8f35abddee1dc5",
+    "flac_sha256": "b4b05a733f96a2120e08691d2643b12dfd1d0b1886f2996676e73251437cdb2f",
+    "pcm_sha256": "3558a5113de26de3314246f4a2f338f218cceecfd0e87dbea13147956e00b483",
+    "frames": 3037440,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_03_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_03_default_seed42.flac",
+    "wav_sha256": "585984b8de82b2d87b6f2ba812b7705c6cf1a95d4265b29486b975c01629ebc7",
+    "flac_sha256": "6270e173588e35249890e2ea33e836c17b858a56976decac0e192a76e66eea6b",
+    "pcm_sha256": "c373ce308a0d2fb2692b7c65d1bf9357730c1d1d06580b2c315891ad9bc13c03",
+    "frames": 2886720,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_04_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_04_default_seed42.flac",
+    "wav_sha256": "99b5ca03d97f80aeb84b0f621312bcf36d74827e9cd8e2008e9b8392b65eb259",
+    "flac_sha256": "b64ac43768759789ffb7b444bb5563904b18752ffb39f4af5cd7a6d74cd095a9",
+    "pcm_sha256": "9aab1a060da8534105d56f172246a00d9926b0a4b049c85f147ca8c521e8bd49",
+    "frames": 2391360,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_05_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_05_default_seed42.flac",
+    "wav_sha256": "85047384b100319f2846513d7023159a23a65bbf4c8c969485507277ea9343f7",
+    "flac_sha256": "e821bb55314516179fdc17e4e91fd98958a75f7dd329e516241215987ddce89e",
+    "pcm_sha256": "d543685a2b8539b0428e957dd5b61b2ad218a90a8a8292df123c71a08474c7e8",
+    "frames": 2642400,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_06_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_06_default_seed42.flac",
+    "wav_sha256": "60170044862d298e1abc26cd60ee31a5288c8945bc2b9c4ed3818eb0c8d9f405",
+    "flac_sha256": "6b29842266ff624f9281bdbe58711992084a3f2eea979904d529150b81048fcb",
+    "pcm_sha256": "93a5f8b72e08f358448bfbe51aec56361b3fe645624c5e182e9ee7ca199b31fa",
+    "frames": 2817600,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_07_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_07_default_seed42.flac",
+    "wav_sha256": "294148f9282b45714d47a157e5f9abc1f8e1ffbbef6430ae31856cf96e7ff513",
+    "flac_sha256": "76f72219500de53369b387bec37d9cc4e601005c45b022b69f34d859fcf497c9",
+    "pcm_sha256": "6551eb5096cbb9fc33a00c28dc7a3a9e5c031ea34e0370e93fa93e612fa67056",
+    "frames": 2836800,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_08_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_08_default_seed42.flac",
+    "wav_sha256": "9d2445ee4413e8227674e43e0cd75465afbec77b30b926122117939dd3a0447a",
+    "flac_sha256": "24f6b8bcf9e9f93ca443a2af3c362bed7679d09cafd87738a6ea0d00278e769c",
+    "pcm_sha256": "7a195f30238ec4a224afca2302a4ae431648191b1c27d47c609f91bc010c5e7d",
+    "frames": 2608320,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_09_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_09_default_seed42.flac",
+    "wav_sha256": "df753b58e9cf0575856b24aacd7925f84ceb3c9fd4fea625b4190ac06b5765b3",
+    "flac_sha256": "fdb88d4e07331496fa94c8cb80e0dad720cf8f6daa4664b53294e32b89929a76",
+    "pcm_sha256": "af4de68cd9c162b3d3f095fa8951c88b608f267cbc70dd4676adf470fc2c7285",
+    "frames": 2542560,
+    "channels": 1,
+    "sample_rate": 24000
+  },
+  {
+    "wav": "results/splitter-en-de-50/theirs/wiki_en_targeted_10_default_seed42.wav",
+    "flac": "docs/audio/splitter-en-de-50/theirs/wiki_en_targeted_10_default_seed42.flac",
+    "wav_sha256": "f5e9d58c0eaf57f0e36aaddf09f09ab3b41d021c8234b03b24985f553a6952d0",
+    "flac_sha256": "647a73225ea108da9dc41ceabf521ed24844fdf3b4309b36148c6dd1272d8e23",
+    "pcm_sha256": "9ac35a11c8c5f834734c143a54e2adeb33eaa394970f8b2015e6eb915ecab018",
+    "frames": 2899680,
+    "channels": 1,
+    "sample_rate": 24000
+  }
+]

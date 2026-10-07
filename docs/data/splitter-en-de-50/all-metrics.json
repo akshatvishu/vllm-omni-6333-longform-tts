@@ -1,0 +1,380 @@
+{
+  "ours": {
+    "quality": {
+      "all": {
+        "reference_words": 13716,
+        "hits": 12958,
+        "substitutions": 599,
+        "deletions": 159,
+        "insertions": 113,
+        "wer": 0.06350247885680957,
+        "coverage": 0.9447360746573344,
+        "substitutions_rate": 0.043671624380285795,
+        "deletions_rate": 0.011592300962379702,
+        "insertions_rate": 0.008238553514144065
+      },
+      "English": {
+        "reference_words": 7071,
+        "hits": 6773,
+        "substitutions": 260,
+        "deletions": 38,
+        "insertions": 69,
+        "wer": 0.051902135482958564,
+        "coverage": 0.9578560316786876,
+        "substitutions_rate": 0.036769905246782635,
+        "deletions_rate": 0.00537406307452977,
+        "insertions_rate": 0.00975816716164616
+      },
+      "German": {
+        "reference_words": 6645,
+        "hits": 6185,
+        "substitutions": 339,
+        "deletions": 121,
+        "insertions": 44,
+        "wer": 0.07584650112866817,
+        "coverage": 0.9307750188111362,
+        "substitutions_rate": 0.051015801354401806,
+        "deletions_rate": 0.018209179834462002,
+        "insertions_rate": 0.006621519939804364
+      }
+    },
+    "audio": {
+      "total_s": 5850.52,
+      "mean_s": 117.0104,
+      "min_s": 84.86,
+      "max_s": 145.56,
+      "sample_rates": {
+        "24000": 50
+      }
+    },
+    "generation_latency_all_50": {
+      "total_s": 314.91923002800047,
+      "mean_s": 6.29838460056001
+    },
+    "memory_max_gib_all_50": 5.373046875,
+    "quiet": {
+      "definition": "native-rate 20ms RMS below -60 dBFS",
+      "total_s": 530.02,
+      "duration_weighted_fraction": 0.09059365663223097,
+      "mean_per_output_s": 10.6004,
+      "mean_longest_interval_s": 1.0012,
+      "max_interval_s": 4.46,
+      "internal_zero_candidates": 516,
+      "candidate_overlapping_quiet_mean_s": 0.4649612403100775,
+      "candidate_overlapping_quiet_median_s": 0.22,
+      "candidate_overlapping_quiet_max_s": 4.46,
+      "join_validation": "UNVALIDATED"
+    },
+    "chunks": {
+      "total": 566,
+      "min": 8,
+      "max": 16
+    }
+  },
+  "theirs": {
+    "quality": {
+      "all": {
+        "reference_words": 13716,
+        "hits": 12960,
+        "substitutions": 597,
+        "deletions": 159,
+        "insertions": 107,
+        "wer": 0.06291921843102946,
+        "coverage": 0.9448818897637795,
+        "substitutions_rate": 0.04352580927384077,
+        "deletions_rate": 0.011592300962379702,
+        "insertions_rate": 0.0078011081948089825
+      },
+      "English": {
+        "reference_words": 7071,
+        "hits": 6757,
+        "substitutions": 259,
+        "deletions": 55,
+        "insertions": 67,
+        "wer": 0.05388205345778532,
+        "coverage": 0.9555932682788856,
+        "substitutions_rate": 0.03662848253429501,
+        "deletions_rate": 0.007778249186819403,
+        "insertions_rate": 0.00947532173667091
+      },
+      "German": {
+        "reference_words": 6645,
+        "hits": 6203,
+        "substitutions": 338,
+        "deletions": 104,
+        "insertions": 40,
+        "wer": 0.07253574115876599,
+        "coverage": 0.9334838224228743,
+        "substitutions_rate": 0.050865312264860796,
+        "deletions_rate": 0.01565086531226486,
+        "insertions_rate": 0.006019563581640331
+      }
+    },
+    "audio": {
+      "total_s": 5850.52,
+      "mean_s": 117.0104,
+      "min_s": 84.86,
+      "max_s": 145.56,
+      "sample_rates": {
+        "24000": 50
+      }
+    },
+    "generation_latency_all_50": {
+      "total_s": 316.6337406959992,
+      "mean_s": 6.332674813919985
+    },
+    "memory_max_gib_all_50": 5.373046875,
+    "quiet": {
+      "definition": "native-rate 20ms RMS below -60 dBFS",
+      "total_s": 514.72,
+      "duration_weighted_fraction": 0.08797850447481591,
+      "mean_per_output_s": 10.294400000000001,
+      "mean_longest_interval_s": 0.9468,
+      "max_interval_s": 4.46,
+      "internal_zero_candidates": 518,
+      "candidate_overlapping_quiet_mean_s": 0.4402316602316602,
+      "candidate_overlapping_quiet_median_s": 0.22,
+      "candidate_overlapping_quiet_max_s": 4.46,
+      "join_validation": "UNVALIDATED"
+    },
+    "chunks": {
+      "total": 568,
+      "min": 8,
+      "max": 16
+    }
+  },
+  "paired_wer": {
+    "all": {
+      "ours_lower": 6,
+      "theirs_lower": 11,
+      "ties": 33,
+      "mean_delta_theirs_minus_ours": -0.0007312728188278525
+    },
+    "English": {
+      "ours_lower": 4,
+      "theirs_lower": 2,
+      "ties": 19,
+      "mean_delta_theirs_minus_ours": 0.0019405289990926731
+    },
+    "German": {
+      "ours_lower": 2,
+      "theirs_lower": 9,
+      "ties": 14,
+      "mean_delta_theirs_minus_ours": -0.003403074636748378
+    }
+  },
+  "performance_excluding_startup": {
+    "attempts_reserved": 100,
+    "memory": "X-Peak-Memory-MB / 1024; server-reported peak reserved GiB.",
+    "planned_attempts": 100,
+    "speed_policy": "Exclude the first attempted request after every server start.",
+    "timing": "Client POST through complete response body; excludes WAV decoding and saving.",
+    "variants": {
+      "ours": {
+        "attempts": 50,
+        "cold_start_excluded": 2,
+        "latency_s": {
+          "mean": 6.264286674083344,
+          "p50": 6.0345999209999945,
+          "p90": 8.063625359399998,
+          "p99": 8.869227061860059,
+          "stddev": 1.168558412101405
+        },
+        "peak_reserved_gib": {
+          "mean": 4.983357747395833,
+          "p50": 4.984375,
+          "p90": 5.03515625,
+          "p99": 5.214238281250001,
+          "stddev": 0.06831838814870922
+        },
+        "rtf": {
+          "mean": 0.05349010575728663,
+          "p50": 0.05399852776170802,
+          "p90": 0.06314184472995564,
+          "p99": 0.06652899122688488,
+          "stddev": 0.0065830846662912135
+        },
+        "speed_samples": 48,
+        "statuses": {
+          "success": 50
+        }
+      },
+      "theirs": {
+        "attempts": 50,
+        "cold_start_excluded": 2,
+        "latency_s": {
+          "mean": 6.294026677499983,
+          "p50": 5.970492644999922,
+          "p90": 7.912521168999945,
+          "p99": 9.231593881089935,
+          "stddev": 1.1454734307164887
+        },
+        "peak_reserved_gib": {
+          "mean": 4.979329427083333,
+          "p50": 4.9765625,
+          "p90": 5.03515625,
+          "p99": 5.214238281250001,
+          "stddev": 0.0683621453339356
+        },
+        "rtf": {
+          "mean": 0.05375444615198104,
+          "p50": 0.05372348701741176,
+          "p90": 0.06236820839404497,
+          "p99": 0.06702285561899471,
+          "stddev": 0.006220475557412819
+        },
+        "speed_samples": 48,
+        "statuses": {
+          "success": 50
+        }
+      }
+    },
+    "warmup_generations": 0
+  },
+  "language_group_quality": [
+    {
+      "asr_failures": 0,
+      "deletions": 21,
+      "generation_failures": 0,
+      "group": "random",
+      "hits": 3976,
+      "insertions": 35,
+      "language": "English",
+      "latency_mean_s": 6.120617237133333,
+      "pooled_coverage": 0.9608506524891252,
+      "pooled_wer": 0.04760753987433543,
+      "reference_words": 4138,
+      "rtf_mean": 0.05690635346740183,
+      "samples": 15,
+      "scored": 15,
+      "substitutions": 141,
+      "variant": "ours"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 17,
+      "generation_failures": 0,
+      "group": "targeted",
+      "hits": 2797,
+      "insertions": 34,
+      "language": "English",
+      "latency_mean_s": 5.747342070600001,
+      "pooled_coverage": 0.9536310944425503,
+      "pooled_wer": 0.057961131946812135,
+      "reference_words": 2933,
+      "rtf_mean": 0.049684030867740425,
+      "samples": 10,
+      "scored": 10,
+      "substitutions": 119,
+      "variant": "ours"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 78,
+      "generation_failures": 0,
+      "group": "random",
+      "hits": 3634,
+      "insertions": 23,
+      "language": "German",
+      "latency_mean_s": 6.7005690768666755,
+      "pooled_coverage": 0.9303635432667691,
+      "pooled_wer": 0.07552483358934972,
+      "reference_words": 3906,
+      "rtf_mean": 0.05568716304387286,
+      "samples": 15,
+      "scored": 15,
+      "substitutions": 194,
+      "variant": "ours"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 43,
+      "generation_failures": 0,
+      "group": "targeted",
+      "hits": 2551,
+      "insertions": 21,
+      "language": "German",
+      "latency_mean_s": 6.512801461200036,
+      "pooled_coverage": 0.9313618108798831,
+      "pooled_wer": 0.07630522088353414,
+      "reference_words": 2739,
+      "rtf_mean": 0.05087913893755398,
+      "samples": 10,
+      "scored": 10,
+      "substitutions": 145,
+      "variant": "ours"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 22,
+      "generation_failures": 0,
+      "group": "random",
+      "hits": 3974,
+      "insertions": 34,
+      "language": "English",
+      "latency_mean_s": 6.088819220666668,
+      "pooled_coverage": 0.9603673272112131,
+      "pooled_wer": 0.047849202513291444,
+      "reference_words": 4138,
+      "rtf_mean": 0.056676453609520436,
+      "samples": 15,
+      "scored": 15,
+      "substitutions": 142,
+      "variant": "theirs"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 33,
+      "generation_failures": 0,
+      "group": "targeted",
+      "hits": 2783,
+      "insertions": 33,
+      "language": "English",
+      "latency_mean_s": 5.7599295419000045,
+      "pooled_coverage": 0.9488578247528128,
+      "pooled_wer": 0.06239345380156836,
+      "reference_words": 2933,
+      "rtf_mean": 0.05000151435735143,
+      "samples": 10,
+      "scored": 10,
+      "substitutions": 117,
+      "variant": "theirs"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 69,
+      "generation_failures": 0,
+      "group": "random",
+      "hits": 3650,
+      "insertions": 21,
+      "language": "German",
+      "latency_mean_s": 6.712597543599964,
+      "pooled_coverage": 0.9344598054275474,
+      "pooled_wer": 0.07091653865847414,
+      "reference_words": 3906,
+      "rtf_mean": 0.05570898903072497,
+      "samples": 15,
+      "scored": 15,
+      "substitutions": 187,
+      "variant": "theirs"
+    },
+    {
+      "asr_failures": 0,
+      "deletions": 35,
+      "generation_failures": 0,
+      "group": "targeted",
+      "hits": 2553,
+      "insertions": 19,
+      "language": "German",
+      "latency_mean_s": 6.70131938129997,
+      "pooled_coverage": 0.932092004381161,
+      "pooled_wer": 0.07484483388097846,
+      "reference_words": 2739,
+      "rtf_mean": 0.05232447956286446,
+      "samples": 10,
+      "scored": 10,
+      "substitutions": 151,
+      "variant": "theirs"
+    }
+  ]
+}
